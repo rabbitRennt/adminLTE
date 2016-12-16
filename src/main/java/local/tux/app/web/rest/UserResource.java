@@ -1,24 +1,18 @@
 package local.tux.app.web.rest;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.codahale.metrics.annotation.Timed;
-import com.jumore.b2b.activity.comm.SoaResult;
-import com.jumore.b2b.activity.service.business.io.request.AppCustomerReq;
-import com.jumore.b2b.activity.service.business.io.response.AppCustomerRes;
-import com.jumore.b2b.daren.api.IAppCustomerApi;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
-import local.tux.app.domain.Authority;
-import local.tux.app.domain.User;
-import local.tux.app.repository.AuthorityRepository;
-import local.tux.app.repository.UserRepository;
-import local.tux.app.repository.search.UserSearchRepository;
-import local.tux.app.security.AuthoritiesConstants;
-import local.tux.app.service.MailService;
-import local.tux.app.service.UserService;
-import local.tux.app.web.rest.dto.ManagedUserDTO;
-import local.tux.app.web.rest.dto.UserDTO;
-import local.tux.app.web.rest.util.HeaderUtil;
-import local.tux.app.web.rest.util.PaginationUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -29,17 +23,25 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-import java.net.URI;
-import java.net.URISyntaxException;
-import javax.servlet.http.HttpServletRequest;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import com.codahale.metrics.annotation.Timed;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import local.tux.app.domain.Authority;
+import local.tux.app.domain.User;
+import local.tux.app.repository.AuthorityRepository;
+import local.tux.app.repository.UserRepository;
+import local.tux.app.repository.search.UserSearchRepository;
+import local.tux.app.security.AuthoritiesConstants;
+import local.tux.app.service.MailService;
+import local.tux.app.service.UserService;
+import local.tux.app.web.rest.dto.ManagedUserDTO;
+import local.tux.app.web.rest.util.HeaderUtil;
+import local.tux.app.web.rest.util.PaginationUtil;
 
 /**
  * REST controller for managing users.
@@ -87,8 +89,6 @@ public class UserResource {
     @Inject
     private UserSearchRepository userSearchRepository;
     
-    @Reference
-    private IAppCustomerApi appCustomerApi;
 
     /**
      * POST  /users -> Creates a new user.
@@ -181,10 +181,10 @@ public class UserResource {
     public ResponseEntity<List<ManagedUserDTO>> getAllUsers(Pageable pageable)
         throws URISyntaxException {
     	
-    	 AppCustomerReq appCustomer=new AppCustomerReq();
-         appCustomer.setId(11L);;
-         SoaResult<AppCustomerRes> soa=appCustomerApi.dbxSelectByPrimaryKey(appCustomer);
-         log.debug("dbx:"+soa.getCode());
+    	 //AppCustomerReq appCustomer=new AppCustomerReq();
+         //appCustomer.setId(11L);;
+         //SoaResult<AppCustomerRes> soa=appCustomerApi.dbxSelectByPrimaryKey(appCustomer);
+         //log.debug("dbx:"+soa.getCode());
          
         Page<User> page = userRepository.findAll(pageable);
         List<ManagedUserDTO> managedUserDTOs = page.getContent().stream()

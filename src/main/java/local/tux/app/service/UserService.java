@@ -1,7 +1,22 @@
 package local.tux.app.service;
 
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import local.tux.app.domain.Authority;
-import local.tux.app.domain.PersistentToken;
 import local.tux.app.domain.User;
 import local.tux.app.repository.AuthorityRepository;
 import local.tux.app.repository.PersistentTokenRepository;
@@ -10,24 +25,6 @@ import local.tux.app.repository.search.UserSearchRepository;
 import local.tux.app.security.SecurityUtils;
 import local.tux.app.service.util.RandomUtil;
 import local.tux.app.web.rest.dto.ManagedUserDTO;
-import java.time.ZonedDateTime;
-import java.time.LocalDate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.jumore.b2b.activity.comm.SoaResult;
-import com.jumore.b2b.activity.service.business.io.request.AppCustomerReq;
-import com.jumore.b2b.activity.service.business.io.response.AppCustomerRes;
-import com.jumore.b2b.daren.api.IAppCustomerApi;
-
-import java.time.ZonedDateTime;
-import javax.inject.Inject;
-import java.util.*;
 
 /**
  * Service class for managing users.
