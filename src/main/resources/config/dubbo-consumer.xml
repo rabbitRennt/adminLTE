@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+	<dubbo:application name="activity-admin-consumer" />
+	
+	<!-- 定义全局的配置，测试中@Reference的check=false不起作用，在这里配置 -->
+	<dubbo:consumer check="false" />
+	
+	<dubbo:registry protocol="zookeeper" address="zookeeper://192.168.1.50:2182?backup=192.168.1.51:2181,192.168.1.52:2181"/> 
+	<!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
+	<dubbo:annotation package="local.tux.app.web.rest" />
+	<!-- <dubbo:reference id="userService" interface="boot.dubbo.api.UserService"  protocol="rest"/>-->
+</beans>
