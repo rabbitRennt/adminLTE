@@ -2,7 +2,6 @@
 
 angular.module('tuxAdminApp')
     .controller('SidebarController', function ($scope, $location, $state, Auth, Principal, ENV) {
-        debugger;
     	$scope.isAuthenticated = Principal.isAuthenticated;
         //$scope.username = JSON.stringify(Principal);
     	$scope.username = "fan";

@@ -6,7 +6,7 @@ angular.module('tuxAdminApp')
 
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
-
+debugger
             var name = $scope.account.firstName;
             var model = localStorageService.get(name);
             if (!model) {

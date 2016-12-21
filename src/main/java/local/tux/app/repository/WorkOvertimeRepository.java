@@ -1,0 +1,20 @@
+package local.tux.app.repository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import local.tux.app.domain.oa.WorkOvertime;
+import local.tux.app.web.rest.dto.oa.WorkOvertimeDTO;
+
+/**
+ * Spring Data JPA repository for the WorkOvertime entity.
+ */
+public interface WorkOvertimeRepository extends JpaRepository<WorkOvertime, Long> {
+
+	//void findAll(Specification<WorkOvertime> specification, Pageable page);
+
+	Page<WorkOvertime> findAll(Specification<WorkOvertimeDTO> spec, Pageable pageable); // 分页按条件查询
+
+}
