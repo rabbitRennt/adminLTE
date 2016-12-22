@@ -1,8 +1,10 @@
 package local.tux.app.web.rest.oa;
 
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,9 +27,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
 
+import local.tux.app.domain.Authority;
+import local.tux.app.domain.User;
 import local.tux.app.domain.oa.WorkOvertime;
+import local.tux.app.security.AuthoritiesConstants;
 import local.tux.app.service.oa.WorkOvertimeService;
+import local.tux.app.web.rest.dto.ManagedUserDTO;
 import local.tux.app.web.rest.dto.oa.WorkOvertimeDTO;
+import local.tux.app.web.rest.util.HeaderUtil;
 import local.tux.app.web.rest.util.PaginationUtil;
 
 /**
@@ -75,7 +84,7 @@ public class WorkOvertimeResource {
 	@Timed
 	public ResponseEntity<?> createWorkOvertime(@RequestBody WorkOvertimeDTO workOvertimeDTO,
 			HttpServletRequest request) throws URISyntaxException {
-
+		log.debug("REST request to save WorkOvertime : {}", workOvertimeDTO);
 		return Optional.ofNullable(workOvertimeService.create(workOvertimeDTO))
 				.map(user -> new ResponseEntity<String>(HttpStatus.OK))
 				.orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
@@ -91,4 +100,67 @@ public class WorkOvertimeResource {
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/workOvertime");
 		return new ResponseEntity<>(workOvertime, headers, HttpStatus.OK);
 	}
+	
+	
+	 @RequestMapping(value = "/workOvertime/{id}",
+		method = RequestMethod.GET,
+		produces = MediaType.APPLICATION_JSON_VALUE)
+	    @Timed
+	    public ResponseEntity<WorkOvertime> getWorkOvertime(@PathVariable long id) {
+	        log.debug("REST request to get workOvertime : {}", id);
+	        /*return workOvertimeService.findWorkOvertimeById(id)
+	                .map(WorkOvertime::new)
+	                .map(WorkOvertime -> new ResponseEntity<>(WorkOvertime, HttpStatus.OK))
+	                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));*/
+	                
+	        return Optional.ofNullable(workOvertimeService.findWorkOvertimeById(id))
+	                .map(workOvertime -> new ResponseEntity<>(workOvertime, HttpStatus.OK))
+	                .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
+	        
+	    }
+	 
+	    
+	    /**
+	     * PUT  /users -> Updates an existing User.
+	     */
+	  /* @RequestMapping(value = "/workOvertime",
+	        method = RequestMethod.PUT,
+	        produces = MediaType.APPLICATION_JSON_VALUE)
+	    @Timed
+	    @Transactional
+	    @Secured(AuthoritiesConstants.ADMIN)
+	    public ResponseEntity<WorkOvertime> updateUser(@RequestBody WorkOvertime workOvertime) throws URISyntaxException {
+	        log.debug("REST request to update User : {}", workOvertime);
+	        Optional<User> existingUser = userRepository.findOneByEmail(workOvertime.getEmail());
+	        
+	        if (existingUser.isPresent() && (!existingUser.get().getId().equals(managedUserDTO.getId()))) {
+	            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("user-management", "emailexists", "E-mail already in use")).body(null);
+	        }
+	        existingUser = userRepository.findOneByLogin(managedUserDTO.getLogin());
+	        if (existingUser.isPresent() && (!existingUser.get().getId().equals(managedUserDTO.getId()))) {
+	            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("user-management", "userexists", "Login already in use")).body(null);
+	        }
+	        return workOvertimeService
+	            .findWorkOvertimeById(workOvertime.getId())
+	            .map(user -> {
+	                user.setLogin(managedUserDTO.getLogin());
+	                user.setFirstName(managedUserDTO.getFirstName());
+	                user.setLastName(managedUserDTO.getLastName());
+	                user.setEmail(managedUserDTO.getEmail());
+	                user.setActivated(managedUserDTO.isActivated());
+	                user.setLangKey(managedUserDTO.getLangKey());
+	                Set<Authority> authorities = user.getAuthorities();
+	                authorities.clear();
+	                managedUserDTO.getAuthorities().stream().forEach(
+	                    authority -> authorities.add(authorityRepository.findOne(authority))
+	                );
+	                return ResponseEntity.ok()
+	                    .headers(HeaderUtil.createAlert("user-management.updated", managedUserDTO.getLogin()))
+	                    .body(new ManagedUserDTO(userRepository
+	                        .findOne(managedUserDTO.getId())));
+	            })
+	            .orElseGet(() -> new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
+
+	    }
+*/
 }

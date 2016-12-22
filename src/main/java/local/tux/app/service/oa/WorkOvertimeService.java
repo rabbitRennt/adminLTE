@@ -1,5 +1,11 @@
 package local.tux.app.service.oa;
 
+import java.sql.Date;
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+
 import javax.inject.Inject;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Path;
@@ -14,9 +20,13 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import local.tux.app.domain.Authority;
+import local.tux.app.domain.User;
 import local.tux.app.domain.oa.WorkOvertime;
 import local.tux.app.repository.WorkOvertimeRepository;
 import local.tux.app.security.SecurityUtils;
+import local.tux.app.service.util.RandomUtil;
+import local.tux.app.web.rest.dto.ManagedUserDTO;
 import local.tux.app.web.rest.dto.oa.WorkOvertimeDTO;
 
 /**
@@ -39,6 +49,11 @@ public class WorkOvertimeService {
 		workOvertime.setStartDate(workOvertimeDTO.getStartDate());
 		workOvertime.setStatus(workOvertimeDTO.getStatus());
 		workOvertime.setTimeLength(workOvertimeDTO.getTimeLength());
+		workOvertime.setRemark(workOvertimeDTO.getRemark());
+		//Date createDate = new Date(0L);
+		//workOvertime.setCreatedDate(createDate);
+		
+
 		workOvertimeRepository.save(workOvertime);
 		log.debug("Created Information for workOvertime: {}", workOvertime);
 		return workOvertime;
@@ -78,5 +93,12 @@ public class WorkOvertimeService {
 
 		return workOvertimeRepository.findAll(pageable);
 	}
+	
+	 @Transactional(readOnly = true)
+	    public WorkOvertime findWorkOvertimeById(Long id) {
+			  WorkOvertime workOvertime = workOvertimeRepository.findOne(id);
+//			  workOvertime.getAuthorities().size(); // eagerly load the association
+	        return workOvertime;
+	    }
 
 }
