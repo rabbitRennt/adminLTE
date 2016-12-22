@@ -21,11 +21,5 @@ public interface WorkOvertimeRepository extends JpaRepository<WorkOvertime, Long
 	Page<WorkOvertime> findAll(Specification<WorkOvertimeDTO> spec, Pageable pageable); // 分页按条件查询
 	
 	Optional<WorkOvertime> findOneById(Long userId);
-<<<<<<< HEAD
-=======
-	
-	
-
->>>>>>> 765facbabe17cf4c94d017da300aef7ef3dbe7ce
 
 }
