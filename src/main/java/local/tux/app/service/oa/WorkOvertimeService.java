@@ -34,11 +34,13 @@ public class WorkOvertimeService {
 	public WorkOvertime create(WorkOvertimeDTO workOvertimeDTO) {
 
 		WorkOvertime workOvertime = new WorkOvertime();
+
 		workOvertime.setCreatedBy(SecurityUtils.getCurrentUser().getUsername());
 		workOvertime.setEndDate(workOvertimeDTO.getEndDate());
 		workOvertime.setStartDate(workOvertimeDTO.getStartDate());
-		workOvertime.setStatus(workOvertimeDTO.getStatus());
+		workOvertime.setStatus(0);
 		workOvertime.setTimeLength(workOvertimeDTO.getTimeLength());
+
 		workOvertimeRepository.save(workOvertime);
 		log.debug("Created Information for workOvertime: {}", workOvertime);
 		return workOvertime;
@@ -56,7 +58,7 @@ public class WorkOvertimeService {
 		return workOvertime;
 	}
 
-	public Page<WorkOvertime> page(WorkOvertimeDTO workOvertimeDTO,Pageable page) {
+	public Page<WorkOvertime> page(WorkOvertimeDTO workOvertimeDTO, Pageable page) {
 
 		return workOvertimeRepository.findAll(new Specification<WorkOvertimeDTO>() {
 			@Override
@@ -71,12 +73,27 @@ public class WorkOvertimeService {
 
 		}, page);
 
-
 	}
 
 	public Page<WorkOvertime> findAll(Pageable pageable) {
 
 		return workOvertimeRepository.findAll(pageable);
+	}
+
+	@Transactional(readOnly = true)
+	public WorkOvertime findWorkOvertimeById(Long id) {
+		WorkOvertime workOvertime = workOvertimeRepository.findOne(id);
+		// workOvertime.getAuthorities().size(); // eagerly load the association
+		return workOvertime;
+	}
+
+	public WorkOvertime updateWorkOvertimeById(WorkOvertimeDTO workOvertimeDTO) {
+		WorkOvertime workOvertime = workOvertimeRepository.findOne(workOvertimeDTO.getId());
+		workOvertime.setStartDate(workOvertimeDTO.getStartDate());
+		workOvertime.setEndDate(workOvertimeDTO.getEndDate());
+		workOvertime.setRemark(workOvertimeDTO.getRemark());
+		workOvertimeRepository.saveAndFlush(workOvertime);
+		return workOvertime;
 	}
 
 }

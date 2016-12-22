@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
           <div class="col-md-4">
-              <button class="btn btn-primary" ui-sref="user-management.new">
+              <button class="btn btn-primary" ui-sref="oa-workovertime.new">
                   <span class="glyphicon glyphicon-flash"></span> <span translate="创建一条加班记录">Create a new User</span>
               </button>
           </div>
@@ -49,21 +49,21 @@
                 <td>{{x.startDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{x.endDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{x.timeLength}}</td>
-                <td>{{x.timeLength}}</td>
-                
+                <td>{{x.status}}</td>
+                <td>{{x.remark}}</td>
                 <td class="text-right">
                     <button type="submit"
-                            ui-sref="user-management-detail({login:workovertime.id})"
+                            ui-sref="oa-workovertime-detail({id:x.id})"
                             class="btn btn-info btn-sm">
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </button>
                     <button type="submit"
-                            ui-sref="user-management.edit({login:workovertime.id})"
+                            ui-sref="oa-workovertime.edit({id:x.id})"
                             class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                     <button type="submit"
-                            ui-sref="user-management.delete({login:workovertime.id})"
+                            ui-sref="oa-workovertime.delete({id:x.id})"
                             class="btn btn-danger btn-sm">
                         <span class="glyphicon glyphicon-remove-circle"></span>
                     </button>

@@ -36,8 +36,7 @@ public class WorkOvertime implements Serializable {
 	private String createdBy; // '加班早请人',
 
 	@CreatedDate
-	@Column(name = "created_date", nullable = false)
-	@JsonIgnore
+	@Column(name = "CREATED_DATE", nullable = false)
 	private Long createdDate; // '加班申请时间',
 
 	@NotNull
@@ -58,9 +57,7 @@ public class WorkOvertime implements Serializable {
 	private Integer timeLength; // '时长(H)',
 
 	@CreatedBy
-	@NotNull
 	@Column(name = "remark" ,nullable = false, length = 128, updatable = false)
-	@JsonIgnore
 	private String remark;
 
 	public Long getId() {

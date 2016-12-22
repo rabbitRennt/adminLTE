@@ -1,0 +1,26 @@
+{
+    "oa-workovertime": {
+        "home": {
+            "title": "Workovertime",
+            "createLabel": "Create a new user",
+            "createOrEditLabel": "Create or edit a workovertime"
+        },
+        "created": "A new user is created with identifier {{ param }}",
+        "updated": "An user is updated with identifier {{ param }}",
+        "deleted": "An user is deleted with identifier {{ param }}",
+        "delete": {
+            "question": "Are you sure you want to delete workovertime {{ id }}?"
+        },
+        "detail": {
+            "title": "Workovertime"
+        },
+        "createdBy": "姓名",
+        "createdDate": "创建时间",
+        "startDate": "加班开始时间",
+        "endDate": "加班结束时间",
+        "timeLength": "加班时长(H)",
+        "status": "审批状态",
+        "remark": "说明"
+       
+    }
+}
