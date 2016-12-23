@@ -1,5 +1,8 @@
 package local.tux.app.service.oa;
 
+import java.util.Date;
+import java.util.Optional;
+
 import javax.inject.Inject;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Path;
@@ -14,6 +17,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import local.tux.app.domain.User;
 import local.tux.app.domain.oa.WorkOvertime;
 import local.tux.app.repository.WorkOvertimeRepository;
 import local.tux.app.security.SecurityUtils;
@@ -34,11 +38,14 @@ public class WorkOvertimeService {
 	public WorkOvertime create(WorkOvertimeDTO workOvertimeDTO) {
 
 		WorkOvertime workOvertime = new WorkOvertime();
+		
 		workOvertime.setCreatedBy(SecurityUtils.getCurrentUser().getUsername());
 		workOvertime.setEndDate(workOvertimeDTO.getEndDate());
 		workOvertime.setStartDate(workOvertimeDTO.getStartDate());
-		workOvertime.setStatus(workOvertimeDTO.getStatus());
+		workOvertime.setStatus(0);
 		workOvertime.setTimeLength(workOvertimeDTO.getTimeLength());
+		
+		
 		workOvertimeRepository.save(workOvertime);
 		log.debug("Created Information for workOvertime: {}", workOvertime);
 		return workOvertime;
@@ -77,6 +84,22 @@ public class WorkOvertimeService {
 	public Page<WorkOvertime> findAll(Pageable pageable) {
 
 		return workOvertimeRepository.findAll(pageable);
+	}
+	
+	  @Transactional(readOnly = true)
+    public WorkOvertime findWorkOvertimeById(Long id) {
+		  WorkOvertime workOvertime = workOvertimeRepository.findOne(id);
+//		  workOvertime.getAuthorities().size(); // eagerly load the association
+        return workOvertime;
+    }
+	  @Transactional(readOnly = true)
+	public WorkOvertime updateWorkOvertimeById(WorkOvertimeDTO workOvertimeDTO) {
+		 WorkOvertime  workOvertime= workOvertimeRepository.findOne(workOvertimeDTO.getId());
+		 workOvertime.setStartDate(workOvertimeDTO.getStartDate());
+		 workOvertime.setEndDate(workOvertimeDTO.getEndDate());
+		 workOvertime.setRemark(workOvertimeDTO.getRemark());
+		 workOvertimeRepository.saveAndFlush(workOvertime);
+		return workOvertime;
 	}
 
 }

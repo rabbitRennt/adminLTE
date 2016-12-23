@@ -7,8 +7,9 @@ import javax.validation.constraints.NotNull;
 import local.tux.app.domain.oa.WorkOvertime;
 
 public class WorkOvertimeDTO {
-
 	
+	@NotNull
+	private Long id;
 	@NotNull
 	private Integer status; // '状态@申请中:通过:驳回',
 	@NotNull	
@@ -17,6 +18,17 @@ public class WorkOvertimeDTO {
 	private Date endDate; // '结束时间',
 	private Integer timeLength; // '时长(H)',
 	private String remark;
+
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Integer getStatus() {
 		return status;

@@ -2,7 +2,7 @@
 
 angular.module('tuxAdminApp')
     .factory('WorkOvertimeService', function ($resource) {
-        return $resource('api/workOvertime/:login', {}, {
+        return $resource('api/workOvertime/:id', {}, {
                 'query': {method: 'GET', isArray: true},
                 'get': {
                     method: 'GET',
