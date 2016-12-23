@@ -1,0 +1,81 @@
+<div>
+    <h2><span>Workovertime</span> "{{workOvertime.createdBy}}"</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span >姓名</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{workOvertime.createdBy}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="oa-workovertime.createdDate">createdDate</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control"
+                           value="{{workOvertime.createdDate | date:'dd/MM/yy HH:mm' }}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="oa-workovertime.startDate">加班开始时间</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control"
+                           value="{{workOvertime.startDate | date:'dd/MM/yy HH:mm' }}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="oa-workovertime.endDate">加班结束时间</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control"
+                           value="{{workOvertime.endDate | date:'dd/MM/yy HH:mm' }}" readonly>
+                </td>
+            </tr>
+            <tr>
+               <td>
+                    <span translate="oa-workovertime.timeLength">加班时长</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{workOvertime.timeLength}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="oa-workovertime.status">审批状态</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{workOvertime.status}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="oa-workovertime.remark">说明</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{workOvertimee.remark}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="user-management"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
