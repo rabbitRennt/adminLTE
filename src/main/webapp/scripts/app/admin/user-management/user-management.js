@@ -103,7 +103,7 @@ angular.module('tuxAdminApp')
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
                         templateUrl: 'scripts/app/admin/user-management/user-management-delete-dialog.html',
-                        controller: 'UserManagementDeleteController',
+                        controller: 'user-managementDeleteController',
                         size: 'md',
                         resolve: {
                             entity: ['User', function(User) {
