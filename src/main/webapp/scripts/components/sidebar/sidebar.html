@@ -26,22 +26,14 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
-            <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
-            </a>
+        <li class="treeview" id="dashboard">
+       		<a href="#" ng-click="setActive('dashboard')">
+               	<i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+           	</a>
             <ul class="treeview-menu">
-                <li class="active"><a href="#/index"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                
-<<<<<<< HEAD
-                <li ><a ui-sref="oa-workovertime" ><i class="fa fa-circle-o"></i>我的加班</a></a></li>
-                <li ><a ui-sref="oa-workovertime" ><i class="fa fa-circle-o"></i>我的调休</a></a></li>
-=======
-                <li ><a ui-sref="work-overtime" ><i class="fa fa-circle-o"></i>我的加班</a></a></li>
-                <li ><a ui-sref="work-overtime" ><i class="fa fa-circle-o"></i>我的调休</a></a></li>
->>>>>>> 765facbabe17cf4c94d017da300aef7ef3dbe7ce
-                   
-                     
+                <li class="" id="dashboardV1" ng-click="setMenuToActive('dashboardV1')"><a href="#/index"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                <li class="" id="workOvertime" ng-click="setMenuToActive('workOvertime')"><a ui-sref="work-overtime" ><i class="fa fa-circle-o"></i>我的加班</a></a></li>
+                <li ><a ui-sref="work-overtime" ><i class="fa fa-circle-o"></i>我的调休</a></a></li>  
                 <li><a href=""><i class="fa fa-circle-o"></i> Dashboard v21111111</a></li>
             </ul>
         </li>
@@ -49,10 +41,68 @@
     </ul>
     
     
+    <ul class="sidebar-menu" ng-switch="isAuthenticated()" has-authority="ROLE_ADMIN">
+        <li class="header">MAIN NAVIGATION</li>
+        <li ng-class="{active: $state.includes('admin')}" class="treeview" id="administration" ng-switch-when="true">
+            <a href="#" ng-click="setActive('administration')">
+                <i class="fa fa-dashboard"></i> <span>Administration</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li ui-sref-active="active"><a ui-sref="user-management" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
+                            &#xA0;<span translate="global.menu.admin.user-management">User management</span></a></li>
+                        <li ui-sref-active="active"><a ui-sref="tracker" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-eye-open"></span>
+                                &nbsp;<span translate="global.menu.admin.tracker">User tracker</span></a></li>
+                        <li ui-sref-active="active"><a ui-sref="metrics" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-dashboard"></span>
+                            &#xA0;<span translate="global.menu.admin.metrics">Metrics</span></a></li>
+                        <li ui-sref-active="active"><a ui-sref="health" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-heart"></span>
+                            &#xA0;<span translate="global.menu.admin.health">Health</span></a></li>
+                        <li ui-sref-active="active"><a ui-sref="configuration" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-list-alt"></span>
+                            &#xA0;<span translate="global.menu.admin.configuration">Configuration1231231</span></a></li>
+                        <li ui-sref-active="active"><a ui-sref="audits" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-bell"></span>
+                            &#xA0;<span translate="global.menu.admin.audits">Audits</span></a></li>
+                        <li ui-sref-active="active"><a ui-sref="logs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-tasks"></span>
+                            &#xA0;<span translate="global.menu.admin.logs">Logs</span></a></li>
+                        <li ng-hide="inProduction" ui-sref-active="active"><a ui-sref="docs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-book"></span>
+                            &#xA0;<span translate="global.menu.admin.apidocs">API</span></a></li>
+                        <li ng-hide="inProduction"><a href='/console' target="_tab" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-hdd"></span>
+                            &#xA0;<span translate="global.menu.admin.database">Database</span></a></li>
+            </ul>
+        </li>
+    </ul>
+    
+    
+    <ul class="sidebar-menu" ng-switch="isAuthenticated()">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview" id="account">
+            <a href="#" ng-click="setActive('account')">
+                <i class="fa fa-dashboard"></i> <span>ACCOUNT</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+	           <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-wrench"></span>
+                            &#xA0;<span translate="global.menu.account.settings">Settings</span></a></li>
+                        <!--
+                        	 <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
+                            &#xA0;<span translate="global.menu.account.password">Password</span></a></li>
+                        -->
+                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="sessions" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-cloud"></span>
+                            &#xA0;<span translate="global.menu.account.sessions">Sessions</span></a></li>
+                        <!-- 
+                         <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()" id="logout" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
+                            &#xA0;<span translate="global.menu.account.logout">Sign out</span></a></li>
+                         -->
+                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-in"></span>
+                            &#xA0;<span translate="global.menu.account.login">Sign in</span></a></li>
+                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-plus-sign"></span>
+                            &#xA0;<span translate="global.menu.account.register">Register</span></a></li>
+          </ul>
+        </li>
+
+    </ul>
+    
     <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
-          <a href="#">
+        <li class="treeview" id="dashboard2">
+          <a href="#" ng-click="setActive('dashboard2')">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -63,8 +113,8 @@
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="treeview" id="layoutOptions">
+          <a href="#" ng-click="setActive('layoutOptions')">
             <i class="fa fa-files-o"></i>
             <span>Layout Options</span>
             <span class="pull-right-container">
@@ -86,8 +136,8 @@
             </span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="treeview" id="charts">
+          <a href="#" ng-click="setActive('charts')">
             <i class="fa fa-pie-chart"></i>
             <span>Charts</span>
             <span class="pull-right-container">
@@ -101,8 +151,8 @@
             <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="treeview" id="uiElements">
+          <a href="#" ng-click="setActive('uiElements')">
             <i class="fa fa-laptop"></i>
             <span>UI Elements</span>
             <span class="pull-right-container">
@@ -118,8 +168,8 @@
             <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="treeview" id="forms">
+          <a href="#" ng-click="setActive('forms')">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -131,8 +181,8 @@
             <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="treeview" id="tables">
+          <a href="#" ng-click="setActive('tables')">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -162,8 +212,8 @@
             </span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="treeview" id="examples">
+          <a href="#" ng-click="setActive('examples')">
             <i class="fa fa-folder"></i> <span>Examples</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -181,8 +231,8 @@
             <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="treeview" id="multilevel">
+          <a href="#" ng-click="setActive('multilevel')">
             <i class="fa fa-share"></i> <span>Multilevel</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -190,8 +240,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
+            <li class="treeview" id="levelOne">
+              <a href="#" ng-click="setActive('levelOne')"><i class="fa fa-circle-o"></i> Level One
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
