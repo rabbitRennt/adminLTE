@@ -1,14 +1,12 @@
 package local.tux.app.service.oa;
 
-import java.util.Date;
-import java.util.Optional;
-
 import javax.inject.Inject;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.boon.core.Sys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -17,7 +15,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import local.tux.app.domain.User;
+import ch.qos.logback.core.net.SyslogOutputStream;
 import local.tux.app.domain.oa.WorkOvertime;
 import local.tux.app.repository.WorkOvertimeRepository;
 import local.tux.app.security.SecurityUtils;
@@ -57,9 +55,11 @@ public class WorkOvertimeService {
 		workOvertime.setCreatedBy(SecurityUtils.getCurrentUser().getUsername());
 		workOvertime.setEndDate(workOvertimeDTO.getEndDate());
 		workOvertime.setStartDate(workOvertimeDTO.getStartDate());
-		workOvertime.setStatus(workOvertimeDTO.getStatus());
 		workOvertime.setTimeLength(workOvertimeDTO.getTimeLength());
+		
 		log.debug("Modify Information for workOvertime: {}", workOvertime);
+		workOvertimeRepository.save(workOvertime);
+		workOvertimeRepository.flush();
 		return workOvertime;
 	}
 
@@ -72,33 +72,28 @@ public class WorkOvertimeService {
 				Path<String> namePath = root.get("name");
 				Path<String> nicknamePath = root.get("nickname");
 				query.where(cb.like(namePath, "%李%"), cb.like(nicknamePath, "%王%")); // 这里可以设置任意条查询条件
-
 				return null;
 			}
-
 		}, page);
-
 
 	}
 
 	public Page<WorkOvertime> findAll(Pageable pageable) {
-
 		return workOvertimeRepository.findAll(pageable);
 	}
 	
-	  @Transactional(readOnly = true)
     public WorkOvertime findWorkOvertimeById(Long id) {
 		  WorkOvertime workOvertime = workOvertimeRepository.findOne(id);
-//		  workOvertime.getAuthorities().size(); // eagerly load the association
         return workOvertime;
     }
-	  @Transactional(readOnly = true)
 	public WorkOvertime updateWorkOvertimeById(WorkOvertimeDTO workOvertimeDTO) {
 		 WorkOvertime  workOvertime= workOvertimeRepository.findOne(workOvertimeDTO.getId());
 		 workOvertime.setStartDate(workOvertimeDTO.getStartDate());
 		 workOvertime.setEndDate(workOvertimeDTO.getEndDate());
+		 workOvertime.setTimeLength(workOvertime.getTimeLength());
 		 workOvertime.setRemark(workOvertimeDTO.getRemark());
-		 workOvertimeRepository.saveAndFlush(workOvertime);
+		 workOvertimeRepository.save(workOvertime);
+		 //workOvertimeRepository.saveAndFlush(workOvertime);
 		return workOvertime;
 	}
 

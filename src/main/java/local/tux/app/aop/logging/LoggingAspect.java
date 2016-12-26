@@ -26,7 +26,7 @@ public class LoggingAspect {
     @Inject
     private Environment env;
 
-    @Pointcut("within(local.tux.app.repository..*) || within(local.tux.app.service..*) || within(local.tux.app.web.rest..*)")
+    @Pointcut("within(local.tux.app.repository..*) || within(local.tux.app.service..*) || within(local.tux.app.web.rest..*) || within(local.tux.app.repository.oa..*) || within(local.tux.app.service.oa..*) || within(local.tux.app.web.rest.oa..*)")
     public void loggingPointcut() {
     }
 

@@ -1,8 +1,11 @@
 package local.tux.app.security;
 
-import local.tux.app.domain.Authority;
-import local.tux.app.domain.User;
-import local.tux.app.repository.UserRepository;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,9 +15,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
-import java.util.*;
-import java.util.stream.Collectors;
+import local.tux.app.domain.User;
+import local.tux.app.repository.UserRepository;
 
 /**
  * Authenticate a user from the database.

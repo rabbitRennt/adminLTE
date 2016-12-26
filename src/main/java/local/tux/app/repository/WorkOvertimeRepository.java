@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import local.tux.app.domain.User;
 import local.tux.app.domain.oa.WorkOvertime;
 import local.tux.app.web.rest.dto.oa.WorkOvertimeDTO;
 

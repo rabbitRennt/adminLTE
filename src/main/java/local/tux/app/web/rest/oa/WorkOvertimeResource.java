@@ -1,6 +1,5 @@
 package local.tux.app.web.rest.oa;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
@@ -30,15 +29,10 @@ import com.codahale.metrics.annotation.Timed;
 import local.tux.app.domain.Authority;
 import local.tux.app.domain.User;
 import local.tux.app.domain.oa.WorkOvertime;
-
-import local.tux.app.repository.UserRepository;
 import local.tux.app.repository.WorkOvertimeRepository;
 import local.tux.app.security.AuthoritiesConstants;
 import local.tux.app.service.oa.WorkOvertimeService;
 import local.tux.app.web.rest.dto.ManagedUserDTO;
-import local.tux.app.web.rest.dto.UserDTO;
-
-
 import local.tux.app.web.rest.dto.oa.WorkOvertimeDTO;
 import local.tux.app.web.rest.util.HeaderUtil;
 import local.tux.app.web.rest.util.PaginationUtil;
@@ -85,9 +79,9 @@ public class WorkOvertimeResource {
 
 	@Inject
 	private WorkOvertimeService workOvertimeService;
-	@Inject
-    private WorkOvertimeRepository workOvertimeRepository;
 	
+	@Inject
+	WorkOvertimeRepository workOvertimeRepository;
 	
 	@RequestMapping(value = "/workOvertime",
 			method = RequestMethod.POST, 
@@ -95,20 +89,6 @@ public class WorkOvertimeResource {
 	@Timed
 	public ResponseEntity<?> createWorkOvertime(@RequestBody WorkOvertimeDTO workOvertimeDTO,
 			HttpServletRequest request) throws URISyntaxException {
-/*<<<<<<< HEAD
-		 WorkOvertime newWorkOvertime = workOvertimeService.create(workOvertimeDTO);
-         String baseUrl = request.getScheme() + // "http"
-         "://" +                                // "://"
-         request.getServerName() +              // "myhost"
-         ":" +                                  // ":"
-         request.getServerPort() +              // "80"
-         request.getContextPath();     
-         
-         return ResponseEntity.created(new URI("/api/workOvertime/" + newWorkOvertime.getId()))
-                 .headers(HeaderUtil.createAlert( "oa-workOvertime.created", newWorkOvertime.getId().toString()))
-                 .body(newWorkOvertime);
-       
-=======*/
 		log.debug("REST request to save WorkOvertime : {}", workOvertimeDTO);
 		return Optional.ofNullable(workOvertimeService.create(workOvertimeDTO))
 				.map(user -> new ResponseEntity<String>(HttpStatus.OK))
@@ -126,19 +106,13 @@ public class WorkOvertimeResource {
     @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<WorkOvertime> updateWorkOvertimeById(@RequestBody WorkOvertimeDTO workOvertimeDTO) throws URISyntaxException {
         log.debug("REST request to update WorkOvertime : {}", workOvertimeDTO);
-//        Optional<User> existingUser = userRepository.findOneByEmail(managedUserDTO.getEmail());
-        WorkOvertime workOvertime= workOvertimeService.updateWorkOvertimeById(workOvertimeDTO);
-            
+        
+        
+        WorkOvertime workOvertime =workOvertimeService.updateWorkOvertimeById(workOvertimeDTO) ;
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createAlert("user-management.updated", workOvertime.getId().toString()))
-                .body(workOvertime);
-                
-               
-        //return new ResponseEntity<>(HttpStatus.OK)count.; 
-           /*     return ResponseEntity.ok()
-                .headers(HeaderUtil.createAlert("user-management.updated", managedUserDTO.getLogin()))
-                .body(new ManagedUserDTO(userRepository
-                    .findOne(managedUserDTO.getId())));*/
+                        .headers(HeaderUtil.createEntityUpdateAlert("user-management.updated", workOvertime.getId().toString()))
+                        .body(workOvertime);
+       
     }
     
 	/**
