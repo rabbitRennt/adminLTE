@@ -1,5 +1,5 @@
 <div>
-    <h2><span>Workovertime</span> "{{workOvertime.createdBy}}"</h2>
+    <h2><span>TakeVacationDetail</span> "{{takeVacationDetail.createdBy}}"</h2>
 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -15,58 +15,58 @@
                     <span >姓名</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{workOvertime.createdBy}}" readonly>
+                    <input type="text" class="input-sm form-control" value="{{takeVacationDetail.createdBy}}" readonly>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="oa-workovertime.createdDate">createdDate</span>
+                    <span translate="takeVacationDetail.createdDate">createdDate</span>
                 </td>
                 <td>
                     <input type="text" class="input-sm form-control"
-                           value="{{workOvertime.createdDate | date:'dd/MM/yy HH:mm' }}" readonly>
+                           value="{{takeVacationDetail.createdDate | date:'dd/MM/yy HH:mm' }}" readonly>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="oa-workovertime.startDate">加班开始时间</span>
+                    <span translate="takeVacationDetail.startDate">加班开始时间</span>
                 </td>
                 <td>
                     <input type="text" class="input-sm form-control"
-                           value="{{workOvertime.startDate | date:'dd/MM/yy HH:mm' }}" readonly>
+                           value="{{takeVacationDetail.startDate | date:'dd/MM/yy HH:mm' }}" readonly>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="oa-workovertime.endDate">加班结束时间</span>
+                    <span translate="takeVacationDetail.endDate">加班结束时间</span>
                 </td>
                 <td>
                     <input type="text" class="input-sm form-control"
-                           value="{{workOvertime.endDate | date:'dd/MM/yy HH:mm' }}" readonly>
+                           value="{{takeVacationDetail.endDate | date:'dd/MM/yy HH:mm' }}" readonly>
                 </td>
             </tr>
             <tr>
                <td>
-                    <span translate="oa-workovertime.timeLength">加班时长</span>
+                    <span translate="takeVacationDetail.timeLength">加班时长</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{workOvertime.timeLength}}" readonly>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="oa-workovertime.status">审批状态</span>
-                </td>
-                <td>
-                    <input type="text" class="input-sm form-control" value="{{workOvertime.status}}" readonly>
+                    <input type="text" class="input-sm form-control" value="{{takeVacationDetail.timeLength}}" readonly>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="oa-workovertime.remark">说明</span>
+                    <span translate="takeVacationDetail.status">审批状态</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{workOvertime.remark}}" readonly>
+                    <input type="text" class="input-sm form-control" value="{{takeVacationDetail.status}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="takeVacationDetail.remark">说明</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{takeVacationDetail.remark}}" readonly>
                 </td>
             </tr>
             </tbody>
@@ -74,7 +74,7 @@
     </div>
 
     <button type="submit"
-            ui-sref="oa-workovertime"
+            ui-sref="oa-takeVacationDetail"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>

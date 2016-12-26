@@ -3,17 +3,17 @@
 angular.module('tuxAdminApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('oa-workovertime', {
+            .state('oa-takeVacationDetail', {
             	parent: 'admin',
-                url: '/oa',
+                url: '/oa-takeVacationDetail',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'oa-workovertime.title'
+                    pageTitle: 'oa-takeVacationDetail.title'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/admin/oa/workovertime.html',
-                        controller: 'WorkOvertimeController'
+                        templateUrl: 'scripts/app/admin/oa-takeVacationDetail/takeVacationDetail.html',
+                        controller: 'takeVacationDetailController'
                     }
                 },
                 resolve: {
@@ -23,17 +23,17 @@ angular.module('tuxAdminApp')
                     }]
                 }
             })
-            .state('oa-workovertime-detail', {
+            .state('oa-takeVacationDetail-detail', {
             	parent: 'admin',
-                url: '/workOvertime/:id',
+                url: '/takeVacationDetail/:id',
 	            data: {
 	                authorities: ['ROLE_USER'],
-	                pageTitle: 'oa-workovertime-detail.title'
+	                pageTitle: 'oa-takeVacationDetail-detail.title'
 	            },
 	            views: {
 	                'content@': {
-	                    templateUrl: 'scripts/app/admin/oa/workovertime-detail.html',
-	                    controller: 'WorkOvertimeDetailController'
+	                    templateUrl: 'scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-detail.html',
+	                    controller: 'takeVacationDetailDetailController'
 	                }
 	            },
 	            resolve: {
@@ -43,7 +43,8 @@ angular.module('tuxAdminApp')
 	                }]
 	            }
 	        })
-           .state('oa-workovertime.new', {
+	        
+           .state('oa-takeVacationDetail.new', {
                 parent: 'admin',
                 url: '/new',
                 data: {
@@ -51,8 +52,8 @@ angular.module('tuxAdminApp')
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'scripts/app/admin/oa/workovertime-dialog.html',
-                        controller: 'WorkovertimeDialogController',
+                        templateUrl: 'scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-dialog.html',
+                        controller: 'takeVacationDetailDialogController',
                         size: 'lg',
                         resolve: {
                             entity: function () {
@@ -63,57 +64,58 @@ angular.module('tuxAdminApp')
                             }
                         }
                     }).result.then(function(result) {
-                        $state.go('oa-workovertime', null, { reload: true });
+                        $state.go('oa-takeVacationDetail', null, { reload: true });
                     }, function() {
-                        $state.go('oa-workovertime');
+                        $state.go('oa-takeVacationDetail');
                     })
                 }]
             })
-        .state('oa-workovertime.edit', {
+        .state('oa-takeVacationDetail.edit', {
             parent: 'admin',
-            url: '/{id}/edit',
+            url: '/oa-takeVacationDetail/{id}/edit',
             data: {
                 authorities: ['ROLE_ADMIN'],
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'scripts/app/admin/oa/workovertime-dialog.html',
-                    controller: 'WorkovertimeDialogController',
+                    templateUrl: 'scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-dialog.html',
+                    controller: 'takeVacationDetailDialogController',
                     size: 'lg',
                     resolve: {
-                        entity: ['WorkOvertimeService', function(WorkOvertimeService) {
-                            return WorkOvertimeService.get({id : $stateParams.id});
+                        entity: ['takeVacationDetailService', function(takeVacationDetailService) {
+                            return takeVacationDetailService.get({id : $stateParams.id});
                         }]
                     }
                 }).result.then(function(result) {
-                    $state.go('oa-workovertime', null, { reload: true });
+                    $state.go('oa-takeVacationDetail', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 })
             }]
-        })
-            .state('oa-workovertime.delete', {
-                parent: 'admin',
-                url: '/{id}/delete',
+        });
+           /*;
+            .state('oa-takeVacationDetail.delete', {
+                parent: 'oa',
+                url: '/{login}/delete',
                 data: {
                     authorities: ['ROLE_ADMIN'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'scripts/app/admin/oa/workovertime-delete-dialog.html',
-                        controller: 'workOvertimeDeleteController',
+                        templateUrl: 'scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-delete-dialog.html',
+                        controller: 'TakeVacationDetailController',
                         size: 'md',
                         resolve: {
-                            entity: ['WorkOvertimeService', function(WorkOvertimeService) {
-                                return WorkOvertimeService.get({id : $stateParams.id});
+                            entity: ['User', function(User) {
+                                return User.get({login : $stateParams.login});
                             }]
                         }
                     }).result.then(function(result) {
-                        $state.go('oa-workovertime', null, { reload: true });
+                        $state.go('oa-takeVacationDetail', null, { reload: true });
                     }, function() {
                         $state.go('^');
                     })
                 }]
             });
-        
+        */
     });

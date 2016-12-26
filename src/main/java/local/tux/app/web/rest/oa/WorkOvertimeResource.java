@@ -110,7 +110,7 @@ public class WorkOvertimeResource {
         
         WorkOvertime workOvertime =workOvertimeService.updateWorkOvertimeById(workOvertimeDTO) ;
         return ResponseEntity.ok()
-                        .headers(HeaderUtil.createEntityUpdateAlert("user-management.updated", workOvertime.getId().toString()))
+                        .headers(HeaderUtil.createEntityUpdateAlert("workOvertime.updated", workOvertime.getId().toString()))
                         .body(workOvertime);
        
     }
@@ -145,7 +145,19 @@ public class WorkOvertimeResource {
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
         
     }
-   
+    /**
+     * DELETE  USER :login -> delete the "login" User.
+     */
+    @RequestMapping(value = "/workOvertime/{id}",
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<Void> deleteWorkOvertime(@PathVariable Long id) {
+        log.debug("REST request to delete workOvertime: {}", id);
+        workOvertimeService.deleteWorkOvertimeInformation(id);
+        return ResponseEntity.ok().headers(HeaderUtil.createAlert( "workOvertime.deleted", id.toString())).build();
+    }
 	
 
 	

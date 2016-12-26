@@ -90,11 +90,18 @@ public class WorkOvertimeService {
 		 WorkOvertime  workOvertime= workOvertimeRepository.findOne(workOvertimeDTO.getId());
 		 workOvertime.setStartDate(workOvertimeDTO.getStartDate());
 		 workOvertime.setEndDate(workOvertimeDTO.getEndDate());
-		 workOvertime.setTimeLength(workOvertime.getTimeLength());
+		 workOvertime.setTimeLength(workOvertimeDTO.getTimeLength());
 		 workOvertime.setRemark(workOvertimeDTO.getRemark());
 		 workOvertimeRepository.save(workOvertime);
 		 //workOvertimeRepository.saveAndFlush(workOvertime);
 		return workOvertime;
 	}
+	
+	 public void deleteWorkOvertimeInformation(long id) {
+		 workOvertimeRepository.findOneById(id).ifPresent(u -> {
+			 workOvertimeRepository.delete(u);
+	            log.debug("Deleted WorkOvertime: {}", u);
+	        });
+	    }
 
 }

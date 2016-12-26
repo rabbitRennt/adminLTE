@@ -11,12 +11,12 @@
     </section>
 
 <div>
-    <h2 translate="pageTitle">Workovertime</h2>
+    <h2 translate="pageTitle">Users</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
           <div class="col-md-4">
-              <button class="btn btn-primary" ui-sref="oa-workovertime.new">
+              <button class="btn btn-primary" ui-sref="oa-takeVacationDetail.new">
                   <span class="glyphicon glyphicon-flash"></span> <span translate="创建一条加班记录">Create a new User</span>
               </button>
           </div>
@@ -33,7 +33,7 @@
                 <th translate="加班结束时间">endDate</th>
                 <th translate="加班时长(H)">timeLength</th>
                 <th translate="审批状态">status</th>
-                <th translate="说明">remark</th>
+                <th translate="说明">remark2</th>
                 
                 <th></th>
                 
@@ -41,7 +41,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="x in workovertimes track by x.id">
+            <tr ng-repeat="x in takeVacationDetail track by x.id">
                 <td><{{x.id}}</a></td>
                 <td>{{x.createdBy}}</td>
                 <td>{{x.createdDate | date:'dd/MM/yy HH:mm'}}</td>
@@ -53,17 +53,17 @@
                 <td>{{x.remark}}</td>
                 <td class="text-right">
                     <button type="submit"
-                            ui-sref="oa-workovertime-detail({id:x.id})"
+                            ui-sref="oa-takeVacationDetail-detail({id:x.id})"
                             class="btn btn-info btn-sm">
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </button>
                     <button type="submit"
-                            ui-sref="oa-workovertime.edit({id:x.id})"
+                            ui-sref="oa-takeVacationDetail.edit({id:x.id})"
                             class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                     <button type="submit"
-                            ui-sref="oa-workovertime.delete({id:x.id})"
+                            ui-sref="oa-takeVacationDetail.delete({id:x.id})"
                             class="btn btn-danger btn-sm">
                         <span class="glyphicon glyphicon-remove-circle"></span>
                     </button>
