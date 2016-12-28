@@ -15,7 +15,7 @@ angular.module('tuxAdminApp')
 			    };
 			
 			    $scope.save = function () {
-			    	$scope.takeVacationDetail.status=0;
+			    	$scope.takeVacationDetail.status=2;
 			     takeVacationDetailService.update($scope.takeVacationDetail, onSaveSuccess, onSaveError);
 			    };
 			    $scope.clear = function() {

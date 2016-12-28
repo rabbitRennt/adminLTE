@@ -25,7 +25,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Document(indexName = "overtime")
 public class WorkOvertime implements Serializable {
 
-
 	/**
 	 * 
 	 */

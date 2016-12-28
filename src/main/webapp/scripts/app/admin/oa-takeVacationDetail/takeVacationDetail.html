@@ -34,7 +34,7 @@
                 <th translate="加班时长(H)">timeLength</th>
                 <th translate="审批状态">status</th>
                 <th translate="说明">remark</th>
-                <th has-authority="ROLE_ADMIN" translate="审批"></th>
+                
                 <th has-authority="ROLE_USER" translate="操作"></th>
                 
             </tr>
@@ -59,9 +59,6 @@
                             class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-pencil">不通过</span>
                     </button>
-                </td>
-                
-                <td  has-authority="ROLE_USER">
                     <button type="submit"
                             ui-sref="oa-takeVacationDetail-detail({id:x.id})"
                             class="btn btn-info btn-sm">

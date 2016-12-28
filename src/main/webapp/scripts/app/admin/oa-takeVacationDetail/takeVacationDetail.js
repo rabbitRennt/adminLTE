@@ -22,7 +22,7 @@ angular.module('tuxAdminApp')
                         return $translate.refresh();
                     }]
                 }
-            })
+            })/*
             .state('oa-takeVacationDetail-detail', {
             	parent: 'admin',
                 url: '/takeVacationDetail/:id',
@@ -138,7 +138,7 @@ angular.module('tuxAdminApp')
 	                    $state.go('oa-takeVacationDetail');
 	                })
 	            }]
-	        });
+	        })*/;
         
         
     });

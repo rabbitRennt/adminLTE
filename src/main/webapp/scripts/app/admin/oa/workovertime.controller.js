@@ -35,7 +35,7 @@ angular.module('tuxAdminApp')
             		id: null, createdBy: null, createdDate: null, startDate: null, endDate: null,
                     timeLength: null, status: null, remark: null
             };
-            $scope.editForm.$setPristine();
-            $scope.editForm.$setUntouched();
+//            $scope.editForm.$setPristine();
+//            $scope.editForm.$setUntouched();
         };
     });

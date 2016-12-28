@@ -44,7 +44,7 @@ public class WorkOvertimeService {
 		Long temp = workOvertimeDTO.getEndDate().getTime() - workOvertimeDTO.getStartDate().getTime();    //相差毫秒数
 	    Long hours = temp / 1000 / 3600;        
 		workOvertime.setTimeLength(hours.intValue());
-		
+		workOvertime.setRemark(workOvertimeDTO.getRemark());
 		
 		workOvertimeRepository.save(workOvertime);
 		log.debug("Created Information for workOvertime: {}", workOvertime);
@@ -94,7 +94,8 @@ public class WorkOvertimeService {
 		 workOvertime.setEndDate(workOvertimeDTO.getEndDate());
 		 Long temp = workOvertimeDTO.getEndDate().getTime() - workOvertimeDTO.getStartDate().getTime();    //相差毫秒数
 	     Long hours = temp / 1000 / 3600;        //相差小时数
-		 workOvertime.setTimeLength(temp.intValue());
+		 workOvertime.setTimeLength(hours.intValue());
+		 workOvertime.setStatus(workOvertimeDTO.getStatus());
 		 workOvertime.setRemark(workOvertimeDTO.getRemark());
 		 workOvertimeRepository.save(workOvertime);
 		 //workOvertimeRepository.saveAndFlush(workOvertime);
