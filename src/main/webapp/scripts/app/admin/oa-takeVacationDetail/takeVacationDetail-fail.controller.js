@@ -15,13 +15,9 @@ angular.module('tuxAdminApp')
 			    };
 			
 			    $scope.save = function () {
-<<<<<<< HEAD
-			    	$scope.takeVacationDetail.status=2;
-			     takeVacationDetailService.update($scope.takeVacationDetail, onSaveSuccess, onSaveError);
-=======
-			    	$scope.takeVacationDetail.status=0;
-			     takeVacationDetailService.patch($scope.takeVacationDetail, onSaveSuccess, onSaveError);
->>>>>>> branch 'master' of https://github.com/rabbitRennt/adminLTE.git
+
+			    $scope.takeVacationDetail.status=2;
+			    takeVacationDetailService.patch($scope.takeVacationDetail, onSaveSuccess, onSaveError);
 			    };
 			    $scope.clear = function() {
 			        $uibModalInstance.dismiss('cancel');
