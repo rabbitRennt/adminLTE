@@ -57,7 +57,7 @@
 
         <div class="form-group">
             <label >加班时长(H)</label>
-            <input type="text" class="form-control" name="timeLength"
+            <input type="text" class="form-control" name="timeLength" readonly
                      ng-model="takeVacationDetail.timeLength" ng-maxlength="2">
         </div>
 
@@ -71,13 +71,6 @@
             <input type="text" class="form-control" name="remark"
                    ng-model="takeVacationDetail.remark" ng-maxlength="50">
 
-            <div ng-show="editForm.remark.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.remark.$error.maxlength" translate="entity.validation.maxlength"
-                   translate-value-max="50">
-                    This field cannot be longer than 50 characters.
-                </p>
-            </div>
         </div>
     </div>
     <div class="modal-footer">

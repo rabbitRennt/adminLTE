@@ -34,10 +34,8 @@
                 <th translate="加班时长(H)">timeLength</th>
                 <th translate="审批状态">status</th>
                 <th translate="说明">remark</th>
-                
-                <th></th>
-                
-                <th></th>
+                <!-- <th has-authority="ROLE_ADMIN" translate="审批"></th> -->
+                <th translate="操作"></th>
             </tr>
             </thead>
             <tbody>
@@ -51,7 +49,16 @@
                 <td>{{x.timeLength}}</td>
                 <td>{{x.status}}</td>
                 <td>{{x.remark}}</td>
-                <td class="text-right">
+                <td has-authority="ROLE_ADMIN">
+                    <button type="submit" ng-click="setStatus(x, 1)"
+                            class="btn btn-info btn-sm">
+                        <span class="glyphicon glyphicon-eye-open">通过</span>
+                    </button>
+                    <button type="submit" ui-sref="oa-workovertime.update({id:x.id})"
+                            class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-pencil">不通过</span>
+                    </button>
+                
                     <button type="submit"
                             ui-sref="oa-workovertime-detail({id:x.id})"
                             class="btn btn-info btn-sm">
@@ -62,7 +69,7 @@
                             class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button type="submit"
+                    <button type="submit" 
                             ui-sref="oa-workovertime.delete({id:x.id})"
                             class="btn btn-danger btn-sm">
                         <span class="glyphicon glyphicon-remove-circle"></span>

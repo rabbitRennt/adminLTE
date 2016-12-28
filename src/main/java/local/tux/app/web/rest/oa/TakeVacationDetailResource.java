@@ -125,7 +125,7 @@ public class TakeVacationDetailResource {
     @Transactional
     @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<TakeVacationDetail> updateTakeVacationDetail(@RequestBody TakeVacationDetailDTO takeVacationDetailDTO) throws URISyntaxException {
-        log.debug("REST request to update User : {}", takeVacationDetailDTO);
+        log.debug("REST request to update TakeVacationDetail : {}", takeVacationDetailDTO);
         
         TakeVacationDetail takeVacationDetail= takeVacationDetailService.updateTakeVacationDetailById(takeVacationDetailDTO);
         
@@ -160,7 +160,7 @@ public class TakeVacationDetailResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<TakeVacationDetail> getTakeVacationDetail(@PathVariable long id) {
-        log.debug("REST request to get User : {}", id);
+        log.debug("REST request to get TakeVacationDetail : {}", id);
         return Optional.ofNullable(takeVacationDetailService.findTakeVacationDetailById(id))
                 .map(takeVacationDetail -> new ResponseEntity<>(takeVacationDetail, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
@@ -176,9 +176,9 @@ public class TakeVacationDetailResource {
     @Timed
     @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<Void> deleteTakeVacationDetail(@PathVariable Long id) {
-        log.debug("REST request to delete User: {}", id);
+        log.debug("REST request to delete TakeVacationDetail: {}", id);
         takeVacationDetailService.deleteTakeVacationDetail(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createAlert( "user-management.deleted", id.toString())).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createAlert( "takeVacationDetail.deleted", id.toString())).build();
     }
 
    

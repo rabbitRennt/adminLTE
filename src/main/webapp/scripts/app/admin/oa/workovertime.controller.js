@@ -22,20 +22,18 @@ angular.module('tuxAdminApp')
         $scope.loadAll();
         console.log($scope.workovertimes);
 
-        $scope.setActive = function (user, isActivated) {
-            user.activated = isActivated;
-            User.update(user, function () {
+        $scope.setStatus = function (workOvertime, isStatus) {
+        	workOvertime.status = isStatus;
+        	WorkOvertimeService.update(workOvertime, function () {
                 $scope.loadAll();
                 $scope.clear();
             });
         };
 
         $scope.clear = function () {
-            $scope.workovertime = {
-                id: null, login: null, firstName: null, lastName: null, email: null,
-                activated: null, langKey: null, createdBy: null, createdDate: null,
-                lastModifiedBy: null, lastModifiedDate: null, resetDate: null,
-                resetKey: null, authorities: null
+            $scope.workOvertime = {
+            		id: null, createdBy: null, createdDate: null, startDate: null, endDate: null,
+                    timeLength: null, status: null, remark: null
             };
             $scope.editForm.$setPristine();
             $scope.editForm.$setUntouched();

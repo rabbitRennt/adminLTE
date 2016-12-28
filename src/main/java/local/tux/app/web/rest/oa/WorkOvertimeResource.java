@@ -156,7 +156,7 @@ public class WorkOvertimeResource {
     public ResponseEntity<Void> deleteWorkOvertime(@PathVariable Long id) {
         log.debug("REST request to delete workOvertime: {}", id);
         workOvertimeService.deleteWorkOvertimeInformation(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createAlert( "workOvertime.deleted", id.toString())).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createAlert( "user-management.deleted", id.toString())).build();
     }
 	
 

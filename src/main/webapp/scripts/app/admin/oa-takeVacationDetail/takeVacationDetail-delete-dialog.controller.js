@@ -1,18 +1,17 @@
-/*'use strict';
+'use strict';
 
 angular.module('tuxAdminApp')
-	.controller('user-managementDeleteController', function($scope, $uibModalInstance, entity, User) {
+	.controller('takeVacationDetailDeleteController', function($scope, $uibModalInstance, entity, takeVacationDetailService) {
 
-        $scope.user = entity;
+        $scope.takeVacationDetail = entity;
         $scope.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };
-        $scope.confirmDelete = function (login) {
-            User.delete({login: login},
+        $scope.confirmDelete = function (id) {
+        	takeVacationDetailService.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
                 });
         };
 
     });
-*/

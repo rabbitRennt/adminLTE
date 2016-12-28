@@ -41,7 +41,9 @@ public class WorkOvertimeService {
 		workOvertime.setEndDate(workOvertimeDTO.getEndDate());
 		workOvertime.setStartDate(workOvertimeDTO.getStartDate());
 		workOvertime.setStatus(0);
-		workOvertime.setTimeLength(workOvertimeDTO.getTimeLength());
+		Long temp = workOvertimeDTO.getEndDate().getTime() - workOvertimeDTO.getStartDate().getTime();    //相差毫秒数
+	    Long hours = temp / 1000 / 3600;        
+		workOvertime.setTimeLength(hours.intValue());
 		
 		
 		workOvertimeRepository.save(workOvertime);
@@ -90,14 +92,16 @@ public class WorkOvertimeService {
 		 WorkOvertime  workOvertime= workOvertimeRepository.findOne(workOvertimeDTO.getId());
 		 workOvertime.setStartDate(workOvertimeDTO.getStartDate());
 		 workOvertime.setEndDate(workOvertimeDTO.getEndDate());
-		 workOvertime.setTimeLength(workOvertimeDTO.getTimeLength());
+		 Long temp = workOvertimeDTO.getEndDate().getTime() - workOvertimeDTO.getStartDate().getTime();    //相差毫秒数
+	     Long hours = temp / 1000 / 3600;        //相差小时数
+		 workOvertime.setTimeLength(temp.intValue());
 		 workOvertime.setRemark(workOvertimeDTO.getRemark());
 		 workOvertimeRepository.save(workOvertime);
 		 //workOvertimeRepository.saveAndFlush(workOvertime);
 		return workOvertime;
 	}
 	
-	 public void deleteWorkOvertimeInformation(long id) {
+	 public void deleteWorkOvertimeInformation(Long id) {
 		 workOvertimeRepository.findOneById(id).ifPresent(u -> {
 			 workOvertimeRepository.delete(u);
 	            log.debug("Deleted WorkOvertime: {}", u);

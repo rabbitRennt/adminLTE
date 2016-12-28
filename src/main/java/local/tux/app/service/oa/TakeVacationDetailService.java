@@ -40,7 +40,9 @@ public class TakeVacationDetailService {
 		takeVacationDetail.setEndDate(takeVacationDetailDTO.getEndDate());
 		takeVacationDetail.setStartDate(takeVacationDetailDTO.getStartDate());
 		takeVacationDetail.setStatus(0);
-		takeVacationDetail.setTimeLength(takeVacationDetailDTO.getTimeLength());
+		Long timesize=takeVacationDetailDTO.getEndDate().getTime()-takeVacationDetailDTO.getStartDate().getTime();
+		Long hours = timesize / 1000 / 3600; 
+		takeVacationDetail.setTimeLength(hours.intValue());
 		takeVacationDetail.setRemark(takeVacationDetailDTO.getRemark());
 		
 		takeVacationDetailRepository.save(takeVacationDetail);
@@ -95,8 +97,11 @@ public class TakeVacationDetailService {
 		  takeVacationDetail.setStartDate(takeVacationDetailDTO.getStartDate());
 		  takeVacationDetail.setEndDate(takeVacationDetailDTO.getEndDate());
 		  takeVacationDetail.setRemark(takeVacationDetailDTO.getRemark());
+		  Long temp = takeVacationDetailDTO.getEndDate().getTime() - takeVacationDetailDTO.getStartDate().getTime();    //相差毫秒数
+	      Long hours = temp / 1000 / 3600;        //相差小时数
+		  takeVacationDetail.setTimeLength(hours.intValue());
+		  takeVacationDetail.setStatus(takeVacationDetailDTO.getStatus());
 		  takeVacationDetailRepository.save(takeVacationDetail);
-//		  takeVacationDetailRepository.saveAndFlush(takeVacationDetail);
 		return takeVacationDetail;
 	}
 	  

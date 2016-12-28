@@ -46,7 +46,7 @@ angular.module('tuxAdminApp')
 	        
            .state('oa-takeVacationDetail.new', {
                 parent: 'admin',
-                url: '/new',
+                url: '/oa-takeVacationDetail/new',
                 data: {
                     authorities: ['ROLE_ADMIN'],
                 },
@@ -89,33 +89,56 @@ angular.module('tuxAdminApp')
                 }).result.then(function(result) {
                     $state.go('oa-takeVacationDetail', null, { reload: true });
                 }, function() {
-                    $state.go('^');
+                    $state.go('oa-takeVacationDetail');
                 })
             }]
-        });
-           /*;
+        })
             .state('oa-takeVacationDetail.delete', {
-                parent: 'oa',
-                url: '/{login}/delete',
+                parent: 'oa-takeVacationDetail',
+                url: '/oa-takeVacationDetail/{id}/delete',
                 data: {
                     authorities: ['ROLE_ADMIN'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
                         templateUrl: 'scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-delete-dialog.html',
-                        controller: 'TakeVacationDetailController',
+                        controller: 'takeVacationDetailDeleteController',
                         size: 'md',
                         resolve: {
-                            entity: ['User', function(User) {
-                                return User.get({login : $stateParams.login});
+                            entity: ['takeVacationDetailService', function(takeVacationDetailService) {
+                                return takeVacationDetailService.get({id : $stateParams.id});
                             }]
                         }
                     }).result.then(function(result) {
                         $state.go('oa-takeVacationDetail', null, { reload: true });
                     }, function() {
-                        $state.go('^');
+                        $state.go('oa-takeVacationDetail');
                     })
                 }]
-            });
-        */
+            })
+	        .state('oa-takeVacationDetail.update', {
+	            parent: 'admin',
+	            url: '/oa-takeVacationDetail/{id}/update',
+	            data: {
+	                authorities: ['ROLE_ADMIN'],
+	            },
+	            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+	                $uibModal.open({
+	                    templateUrl: 'scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-fail.html',
+	                    controller: 'takeVacationDetailFailController',
+	                    size: 'lg',
+	                    resolve: {
+	                        entity: ['takeVacationDetailService', function(takeVacationDetailService) {
+	                            return takeVacationDetailService.get({id : $stateParams.id});
+	                        }]
+	                    }
+	                }).result.then(function(result) {
+	                    $state.go('oa-takeVacationDetail', null, { reload: true });
+	                }, function() {
+	                    $state.go('oa-takeVacationDetail');
+	                })
+	            }]
+	        });
+        
+        
     });

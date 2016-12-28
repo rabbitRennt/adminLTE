@@ -11,7 +11,7 @@
     </section>
 
 <div>
-    <h2 translate="pageTitle">Users</h2>
+    <h2 translate="pageTitle">TakeVacationDetail</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
@@ -33,15 +33,14 @@
                 <th translate="加班结束时间">endDate</th>
                 <th translate="加班时长(H)">timeLength</th>
                 <th translate="审批状态">status</th>
-                <th translate="说明">remark2</th>
+                <th translate="说明">remark</th>
+                <th has-authority="ROLE_ADMIN" translate="审批"></th>
+                <th has-authority="ROLE_USER" translate="操作"></th>
                 
-                <th></th>
-                
-                <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="x in takeVacationDetail track by x.id">
+            <tr ng-repeat="x in takeVacationDetails track by x.id">
                 <td><{{x.id}}</a></td>
                 <td>{{x.createdBy}}</td>
                 <td>{{x.createdDate | date:'dd/MM/yy HH:mm'}}</td>
@@ -51,7 +50,18 @@
                 <td>{{x.timeLength}}</td>
                 <td>{{x.status}}</td>
                 <td>{{x.remark}}</td>
-                <td class="text-right">
+                <td has-authority="ROLE_ADMIN">
+                    <button type="submit" ng-click="setStatus(x, 1)"
+                            class="btn btn-info btn-sm">
+                        <span class="glyphicon glyphicon-eye-open">通过</span>
+                    </button>
+                    <button type="submit" ui-sref="oa-takeVacationDetail.update({id:x.id})"
+                            class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-pencil">不通过</span>
+                    </button>
+                </td>
+                
+                <td  has-authority="ROLE_USER">
                     <button type="submit"
                             ui-sref="oa-takeVacationDetail-detail({id:x.id})"
                             class="btn btn-info btn-sm">

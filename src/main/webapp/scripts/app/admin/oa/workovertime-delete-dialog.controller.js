@@ -3,7 +3,7 @@
 angular.module('tuxAdminApp')
 	.controller('workOvertimeDeleteController', function($scope, $uibModalInstance, entity, WorkOvertimeService) {
 
-        $scope.WorkOvertimeService = entity;
+        $scope.workOvertime = entity;
         $scope.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };

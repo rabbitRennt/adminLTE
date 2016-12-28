@@ -45,7 +45,7 @@ angular.module('tuxAdminApp')
 	        })
            .state('oa-workovertime.new', {
                 parent: 'admin',
-                url: '/new',
+                url: '/oa/new',
                 data: {
                     authorities: ['ROLE_ADMIN'],
                 },
@@ -88,13 +88,13 @@ angular.module('tuxAdminApp')
                 }).result.then(function(result) {
                     $state.go('oa-workovertime', null, { reload: true });
                 }, function() {
-                    $state.go('^');
+                    $state.go('oa-workovertime');
                 })
             }]
         })
             .state('oa-workovertime.delete', {
-                parent: 'admin',
-                url: '/{id}/delete',
+                parent: 'oa-workovertime',
+                url: '/oa/{id}/delete',
                 data: {
                     authorities: ['ROLE_ADMIN'],
                 },
@@ -111,9 +111,32 @@ angular.module('tuxAdminApp')
                     }).result.then(function(result) {
                         $state.go('oa-workovertime', null, { reload: true });
                     }, function() {
-                        $state.go('^');
+                        $state.go('oa-workovertime');
                     })
                 }]
-            });
+            })
+            .state('oa-workovertime.update', {
+	            parent: 'admin',
+	            url: '/oa/{id}/update',
+	            data: {
+	                authorities: ['ROLE_ADMIN'],
+	            },
+	            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+	                $uibModal.open({
+	                    templateUrl: 'scripts/app/admin/oa/workovertime-fail.html',
+	                    controller: 'workOvertimeFailController',
+	                    size: 'lg',
+	                    resolve: {
+	                        entity: ['WorkOvertimeService', function(takeVacationDetailService) {
+	                            return takeVacationDetailService.get({id : $stateParams.id});
+	                        }]
+	                    }
+	                }).result.then(function(result) {
+	                    $state.go('oa-workovertime', null, { reload: true });
+	                }, function() {
+	                    $state.go('oa-workovertime');
+	                })
+	            }]
+	        });
         
     });
