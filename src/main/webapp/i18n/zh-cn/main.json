@@ -1,0 +1,19 @@
+{
+    "main": {
+        "title": "Welcome, Java Hipster!",
+        "subtitle": "这是您的首页！",
+        "logged": {
+            "message": "您作为用户 \"{{username}}\"被计入日志了。"
+        },
+        "question": "如果您对JHipster有任何疑问:",
+        "link": {
+            "homepage": "JHipster首页",
+            "stackoverflow": "在JHipster堆栈溢出 ",
+            "bugtracker": "JHipster bug 管理",
+            "chat": "JHipster 公共聊天室",
+            "contact": "在Twitter上联系 @java_hipster"
+        },
+        "like": "如果您喜欢JHipster，请不要忘记给我们一颗星星",
+        "github": "Github"
+    }
+}

@@ -1,0 +1,117 @@
+{
+    "global": {
+        "title": "tuxAdmin",
+        "browsehappy": "您正在使用一个  <strong>过时的</strong> 浏览器. 请 <a href=\"http://browsehappy.com/?locale=fr\">升级一下您的浏览器</a>来改善您的体验效果。",
+        "menu": {
+            "home": "首页",
+            "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+            "entities": {
+                "main": "实体",
+                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+            },
+            "account": {
+                "main": "用户",
+                "settings": "设置",
+                "password": "更改密码",
+                "sessions": "会话",
+                "login": "登录",
+                "logout": "退出",
+                "register": "注册"
+            },
+            "admin": {
+                "main": "管理员",
+                "user-management": "用户管理",
+                "tracker": "用户追踪",
+                "metrics": "指标",
+                "health": "健康状况",
+                "configuration": "配置",
+                "logs": "日志",
+                "audits": "审核",
+                "apidocs": "API",
+                "database": "数据库"
+            },
+            "language": "语言"
+        },
+        "form": {
+            "username": "用户名",
+            "username.placeholder": "您的用户名",
+            "newpassword": "新密码",
+            "newpassword.placeholder": "新密码",
+            "confirmpassword": "新密码确认",
+            "confirmpassword.placeholder": "确认新密码",
+            "email": "电子邮件",
+            "email.placeholder": "您的电子邮件"
+        },
+        "messages": {
+            "info": {
+                "authenticated": "如果您想 <a class=\"alert-link\" href=\"#/login\">登录</a>，您可以使用默认的账户：<br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\").",
+                "register": "您还没有一个账户吗？ <a class=\"alert-link\" href=\"#/register\">注册一个账户</a>"
+            },
+            "error": {
+                "dontmatch": "验证的密码与密码不匹配！"
+            },
+            "validate": {
+                "newpassword": {
+                    "required": "请输入您的密码。",
+                    "minlength": "您输入的密码至少5位。",
+                    "maxlength": "您输入的密码不能多于50位。",
+                    "strength": "密码强度："
+                },
+                "confirmpassword": {
+                    "required": "请再次输入您的密码。",
+                    "minlength": "您再次输入的密码至少5位。",
+                    "maxlength": "您再次输入的密码不能多于50位。"
+                },
+                "email": {
+                    "required": "请输入您的电子邮箱。",
+                    "minlength": "您输入的电子邮箱至少5位。",
+                    "maxlength": "您输入的电子邮箱不能多于50位。",
+                    "invalid": "您输入的电子邮箱无效。"
+                }
+            }
+        },
+        "field": {
+            "id": "ID"
+        }
+    },
+    "entity": {
+        "action": {
+            "addblob": "添加滴",
+            "addimage": "添加图片",
+            "back": "返回",
+            "cancel": "取消",
+            "edit": "编辑",
+            "delete": "删除",
+            "save": "保存",
+            "view": "视图"
+        },
+        "detail": {
+            "field": "属性",
+            "value": "值"
+        },
+        "delete": {
+            "title": "验证删除操作"
+        },
+        "validation": {
+            "required": "这个属性是必须的。",
+            "minlength": "这个属性至少需要 {{min}} 位。",
+            "maxlength": "这个属性不能多于{{max}} 位。",
+            "min": "这个属性应该大于{{min}}。",
+            "max": "这个属性应该小于{{max}}。",
+            "minbytes": "这个属性应该大于{{min}} 字节。",
+            "maxbytes": "这个属性应该小于{{max}} 字节。",
+            "pattern": "这个属性应该按照这种模式 {{pattern}}。",
+            "number": "这个属性应该是一个数字。",
+            "datetimelocal": "这个属性应该是一个日期和时间。"
+        }
+    },
+    "error": {
+        "server.not.reachable": "无法连接到服务器。",
+        "NotNull": "属性 {{fieldName}} 不能为空！",
+        "Size": "属性 {{fieldName}} 不满足最大值/最小值得要求！",
+        "userexists": "登录名已经被使用！",
+        "emailexists": "电子邮箱已经在使用中！",
+        "idexists": "一个新的{{entityName}}不能够已经拥有一个ID！"
+    },
+    "footer": "这是您的底部"
+}

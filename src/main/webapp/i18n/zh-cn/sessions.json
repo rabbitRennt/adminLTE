@@ -1,0 +1,15 @@
+{
+    "sessions": {
+        "title": "活动会话 [<b>{{username}}</b>]",
+        "table": {
+            "ipaddress": "IP地址",
+            "useragent": "用户代理",
+            "date": "日期",
+            "button": "失效"
+        },
+        "messages": {
+            "success": "<strong>会话失效！</strong>",
+            "error": "<strong>发生了一个错误！</strong>会话不能失效！"
+        }
+    }
+}

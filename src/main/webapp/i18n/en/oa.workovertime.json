@@ -14,13 +14,13 @@
         "detail": {
             "title": "Workovertime"
         },
-        "createdBy": "姓名",
-        "createdDate": "创建时间",
-        "startDate": "加班开始时间",
-        "endDate": "加班结束时间",
-        "timeLength": "加班时长(H)",
-        "status": "审批状态",
-        "remark": "说明"
+        "createdBy": "Created by",
+        "createdDate": "Created date",
+        "startDate": "Start date",
+        "endDate": "End date",
+        "timeLength": "Time length(H)",
+        "status": "Status",
+        "remark": "Remark"
        
     }
 }

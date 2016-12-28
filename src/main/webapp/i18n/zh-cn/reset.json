@@ -1,0 +1,30 @@
+{
+    "reset": {
+        "request": {
+            "title": "更改您的密码",
+            "form": {
+                "button": "更改密码"
+            },
+            "messages": {
+                "info": "确保电子邮箱地址是您已经注册的电子邮箱地址。",
+                "success": "请详细地核对您的邮箱中更改密码的电子邮件。",
+                "notfound": "<strong>电子邮箱地址没有被注册！</strong> 请检查，稍后再试。"
+
+            }
+
+        },
+        "finish" : {
+            "title": "更改密码",
+            "form": {
+                "button": "验证新密码"
+            },
+            "messages": {
+                "info": "选择一个新的密码",
+                "success": "<strong>您的密码已经被更改。</strong> 请<a class=\"alert-link\" href=\"#/login\">登录</a>。",
+                "keymissing": "复位键丢失。",
+                "error": "无法重置您的密码。请记住一个密码请求在24小时内是唯一有效的 。"
+            }
+        }
+    }
+
+}

@@ -1,0 +1,12 @@
+{
+    "tracker": {
+        "title": "实时用户活动",
+        "table": {
+            "userlogin": "用户",
+            "ipaddress": "IP地址",
+            "userAgent": "用户代理",
+            "page": "当前页",
+            "time": "时间"
+        }
+    }
+}
