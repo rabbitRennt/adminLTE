@@ -1,5 +1,7 @@
 package local.tux.app.service.oa;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Path;
@@ -14,12 +16,13 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import local.tux.app.domain.User;
+import local.tux.app.domain.oa.TakeVacation;
 import local.tux.app.domain.oa.TakeVacationDetail;
 import local.tux.app.repository.TakeVacationDetailRepository;
 import local.tux.app.security.SecurityUtils;
-import local.tux.app.web.rest.dto.oa.TakeVacationDTO;
+import local.tux.app.web.rest.dto.oa.EOAConstantHelper.EStatus;
 import local.tux.app.web.rest.dto.oa.TakeVacationDetailDTO;
-import local.tux.app.web.rest.dto.oa.TakeVacationDetailDTO.EStatus;
 
 /**
  * Service class for managing users.
@@ -97,6 +100,12 @@ public class TakeVacationDetailService {
 
 	@Transactional(readOnly = true)
 	public TakeVacationDetail updateTakeVacationDetailById(TakeVacationDetailDTO takeVacationDetailDTO) {
+
+		if (takeVacationService.checkUsableTimeByUserNmae(
+				SecurityUtils.getCurrentUser().getUsername()) < takeVacationDetailDTO.getTimeLength()) {
+			throw new RuntimeException(" no Usable time ..");
+		}
+		
 		TakeVacationDetail takeVacationDetail = takeVacationDetailRepository.findOne(takeVacationDetailDTO.getId());
 		takeVacationDetail.setStartDate(takeVacationDetailDTO.getStartDate());
 		takeVacationDetail.setEndDate(takeVacationDetailDTO.getEndDate());
@@ -125,18 +134,19 @@ public class TakeVacationDetailService {
 	public void verify(Long id, TakeVacationDetailDTO takeVacationDetailDTO) {
 		//
 		TakeVacationDetail t = takeVacationDetailRepository.findOne(id);
-		if (t.getStatus() != local.tux.app.web.rest.dto.oa.TakeVacationDetailDTO.EStatus.APPLY.ordinal()){
+		if (t.getStatus() != EStatus.APPLY.ordinal()) {
 			return;
 		}
-		int row = takeVacationDetailRepository.updateStatusByKey(takeVacationDetailDTO.getStatus().ordinal(),takeVacationDetailDTO.getRemark()==null?"":takeVacationDetailDTO.getRemark(), id);
+		if (takeVacationService.checkUsableTimeByUserNmae(
+				SecurityUtils.getCurrentUser().getUsername()) < takeVacationDetailDTO.getTimeLength()) {
+			throw new RuntimeException(" no Usable time ..");
+		}
+		
+		int row = takeVacationDetailRepository.updateStatusByKey(takeVacationDetailDTO.getStatus().ordinal(),
+				takeVacationDetailDTO.getRemark() == null ? "" : takeVacationDetailDTO.getRemark(), id);
 		// 如果审核通过，更新汇总表
-		if (row == 1 && takeVacationDetailDTO
-				.getStatus() == local.tux.app.web.rest.dto.oa.TakeVacationDetailDTO.EStatus.PASS) {
-			TakeVacationDTO dto = new TakeVacationDTO();
-			dto.setUserName(t.getCreatedBy());
-			dto.setTVHourLength(t.getTimeLength());
-			
-			takeVacationService.updateTakeVacationById(dto);
+		if (row == 1 && takeVacationDetailDTO.getStatus() == EStatus.PASS) {
+			takeVacationService.updateById4TakeVacation(t.getCreatedBy(), t.getTimeLength());
 		}
 
 	}

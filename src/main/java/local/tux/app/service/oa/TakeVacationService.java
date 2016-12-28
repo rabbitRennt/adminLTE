@@ -13,7 +13,6 @@ import local.tux.app.domain.User;
 import local.tux.app.domain.oa.TakeVacation;
 import local.tux.app.repository.UserRepository;
 import local.tux.app.repository.oa.TakeVacationRepository;
-import local.tux.app.web.rest.dto.oa.TakeVacationDTO;
 
 /**
  * Service class for managing users.
@@ -37,7 +36,6 @@ public class TakeVacationService {
 		if (oldTakeVacation == null) {
 			takeVacationRepository.save(takeVacation);
 		} else {
-
 			log.error("Created Information for takeVacation: error", takeVacation);
 			throw new RuntimeException("create object error ,object exists..");
 		}
@@ -53,23 +51,43 @@ public class TakeVacationService {
 	}
 
 	@Transactional(readOnly = true)
-	public void updateTakeVacationById(TakeVacationDTO dto) {
-		Optional<User> user = userRepository.findOneByLogin(dto.getUserName());
+	public void updateById4TakeVacation(String username, Integer timeLength) {
+		Optional<User> user = userRepository.findOneByLogin(username);
 		TakeVacation t = takeVacationRepository.findOneByUserId(user.get().getId());
-		int row=0;
+		int row = takeVacationRepository.update(-timeLength, 0, timeLength, t.getUserId());
+		if (row == 0)
+			throw new RuntimeException(" this user data error..");
+
+	}
+
+	@Transactional(readOnly = true)
+	public void updateById4WorkOvertime(String username, Integer timeLength) {
+		Optional<User> user = userRepository.findOneByLogin(username);
+		TakeVacation t = takeVacationRepository.findOneByUserId(user.get().getId());
 		if (t == null) {
-			throw new RuntimeException("no userabled time length");
+			t = new TakeVacation();
+			t.setTotalHour(timeLength);
+			t.setUsable(timeLength);
+			t.setUserId(user.get().getId());
+			t.setUsed(0);
+			takeVacationRepository.save(t);
 		} else {
-			if (dto.getTVHourLength() != null)
-				row=takeVacationRepository.update(-dto.getTVHourLength(), 0, dto.getTVHourLength(), t.getUserId());
-			else if (dto.getWOHourLength() != null) {
-				row=takeVacationRepository.update(dto.getWOHourLength(), dto.getWOHourLength(), 0, t.getUserId());
+			if (t.getUsable() < timeLength) {
+				throw new RuntimeException("no userable time..");
 			}
-			if (row==0){
+			int row = takeVacationRepository.update(timeLength, timeLength, 0, t.getUserId());
+			if (row == 0)
 				throw new RuntimeException(" this user data error..");
-			}
 		}
 
+	}
+
+	public int checkUsableTimeByUserNmae(String username) {
+		Optional<User> user = userRepository.findOneByLogin(username);
+		TakeVacation t = takeVacationRepository.findOneByUserId(user.get().getId());
+		if (t == null)
+			return 0;
+		return t.getUsable();
 	}
 
 }

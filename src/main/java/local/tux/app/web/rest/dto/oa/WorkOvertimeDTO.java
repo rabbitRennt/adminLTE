@@ -4,23 +4,20 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
-import local.tux.app.domain.oa.WorkOvertime;
+import local.tux.app.web.rest.dto.oa.EOAConstantHelper.EStatus;
 
 public class WorkOvertimeDTO {
-	
+
 	@NotNull
 	private Long id;
 	@NotNull
-	private Integer status; // '状态@申请中:通过:驳回',
-	@NotNull	
+	private EStatus status; // '状态@申请中:通过:驳回',
+	@NotNull
 	private Date startDate; // '开始时间',
 	@NotNull
 	private Date endDate; // '结束时间',
 	private Integer timeLength; // '时长(H)',
 	private String remark;
-
-	
-	
 
 	public Long getId() {
 		return id;
@@ -28,14 +25,6 @@ public class WorkOvertimeDTO {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
 	}
 
 	public Date getStartDate() {
@@ -68,6 +57,14 @@ public class WorkOvertimeDTO {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public EStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(EStatus status) {
+		this.status = status;
 	}
 
 }

@@ -1,7 +1,5 @@
 package local.tux.app.repository.oa;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -28,8 +26,8 @@ public interface TakeVacationRepository extends JpaRepository<TakeVacation, Long
 	@Modifying(clearAutomatically = true) 
 	@Query("update TakeVacation takeVacation "
 			+ " set takeVacation.usable = usable +  :usable,"
-			+ " 	takeVacation.totalHour =  :totalHour,"
-			+ "     takeVacation.used =  :used "
+			+ " 	takeVacation.totalHour =totalHour +  :totalHour,"
+			+ "     takeVacation.used =used + :used "
 			+ " where takeVacation.userId = :userId")  
 	int update(@Param("usable") Integer usable, @Param("totalHour") Integer totalHour,@Param("used") Integer used, @Param("userId") Long userId);
 

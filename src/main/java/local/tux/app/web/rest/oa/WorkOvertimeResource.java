@@ -160,6 +160,22 @@ public class WorkOvertimeResource {
     }
 	
 
-	
+    /**
+     * PUT  /users -> Updates an existing User.
+     */
+    @RequestMapping(value = "/workOvertime",
+        method = RequestMethod.PATCH,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional
+    @Secured(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<Void> modifySimple(@RequestBody WorkOvertimeDTO workOvertimeDTO) throws URISyntaxException {
+        log.debug("REST request to update WorkOvertime : {}", workOvertimeDTO);
+        workOvertimeService.verify(workOvertimeDTO) ;
+        return ResponseEntity.ok()
+                        .headers(HeaderUtil.createEntityUpdateAlert("workOvertime.updated", workOvertimeDTO.getId().toString()))
+                        .build();
+        
+    }
 
 }

@@ -21,10 +21,10 @@ angular.module('tuxAdminApp')
         };
         $scope.loadAll();
         console.log($scope.workovertimes);
-
-        $scope.setStatus = function (workOvertime, isStatus) {
-        	workOvertime.status = isStatus;
-        	WorkOvertimeService.update(workOvertime, function () {
+        
+        //审核通过
+        $scope.pass = function (param) {
+        	WorkOvertimeService.patch(param, function () {
                 $scope.loadAll();
                 $scope.clear();
             });

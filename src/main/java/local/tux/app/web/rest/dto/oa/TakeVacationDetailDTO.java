@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+import local.tux.app.web.rest.dto.oa.EOAConstantHelper.EStatus;
+
 public class TakeVacationDetailDTO {
 
 	@NotNull
@@ -16,22 +18,6 @@ public class TakeVacationDetailDTO {
 	private Date endDate; // '结束时间',
 	private Integer timeLength; // '时长(H)',
 	private String remark;
-
-	
-	/**
-	 * 调休状态
-	 * @author Administrator
-	 *
-	 */
-	public enum EStatus{
-		
-		APPLY,//申请中
-		PASS,
-		DISABLED,
-		CANCLE
-		
-	}
-	
 
 	public Long getId() {
 		return id;
