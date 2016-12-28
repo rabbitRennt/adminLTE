@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -25,7 +24,8 @@ public class TakeVacationDetail implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -723851336920135480L;
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

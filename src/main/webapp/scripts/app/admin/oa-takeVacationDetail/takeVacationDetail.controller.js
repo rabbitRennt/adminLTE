@@ -22,9 +22,8 @@ angular.module('tuxAdminApp')
         $scope.loadAll();
         console.log($scope.takeVacationDetail);
 
-        $scope.setStatus = function (takeVacationDetail, isStatus) {
-        	takeVacationDetail.status = isStatus;
-        	takeVacationDetailService.update(takeVacationDetail, function () {
+        $scope.pass = function (param) {
+        	takeVacationDetailService.patch(param, function () {
                 $scope.loadAll();
                 $scope.clear();
             });

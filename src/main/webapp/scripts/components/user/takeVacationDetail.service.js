@@ -13,6 +13,7 @@ angular.module('tuxAdminApp')
                 },
                 'save': { method:'POST' },
                 'update': { method:'PUT' },
-                'delete':{ method:'DELETE'}
+                'delete':{ method:'DELETE'},
+                'patch':{ method:'PATCH'}
             });
         });

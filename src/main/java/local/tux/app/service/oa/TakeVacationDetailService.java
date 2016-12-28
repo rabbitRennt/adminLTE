@@ -1,6 +1,5 @@
 package local.tux.app.service.oa;
 
-
 import javax.inject.Inject;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Path;
@@ -18,7 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 import local.tux.app.domain.oa.TakeVacationDetail;
 import local.tux.app.repository.TakeVacationDetailRepository;
 import local.tux.app.security.SecurityUtils;
+import local.tux.app.web.rest.dto.oa.TakeVacationDTO;
 import local.tux.app.web.rest.dto.oa.TakeVacationDetailDTO;
+import local.tux.app.web.rest.dto.oa.TakeVacationDetailDTO.EStatus;
 
 /**
  * Service class for managing users.
@@ -30,6 +31,9 @@ public class TakeVacationDetailService {
 	@Inject
 	private TakeVacationDetailRepository takeVacationDetailRepository;
 
+	@Inject
+	private TakeVacationService takeVacationService;
+
 	private final Logger log = LoggerFactory.getLogger(TakeVacationDetailService.class);
 
 	public TakeVacationDetail create(TakeVacationDetailDTO takeVacationDetailDTO) {
@@ -40,11 +44,11 @@ public class TakeVacationDetailService {
 		takeVacationDetail.setEndDate(takeVacationDetailDTO.getEndDate());
 		takeVacationDetail.setStartDate(takeVacationDetailDTO.getStartDate());
 		takeVacationDetail.setStatus(0);
-		Long timesize=takeVacationDetailDTO.getEndDate().getTime()-takeVacationDetailDTO.getStartDate().getTime();
-		Long hours = timesize / 1000 / 3600; 
+		Long timesize = takeVacationDetailDTO.getEndDate().getTime() - takeVacationDetailDTO.getStartDate().getTime();
+		Long hours = timesize / 1000 / 3600;
 		takeVacationDetail.setTimeLength(hours.intValue());
 		takeVacationDetail.setRemark(takeVacationDetailDTO.getRemark());
-		
+
 		takeVacationDetailRepository.save(takeVacationDetail);
 		log.debug("Created Information for takeVacationDetail: {}", takeVacationDetail);
 		return takeVacationDetail;
@@ -56,18 +60,18 @@ public class TakeVacationDetailService {
 		takeVacationDetail.setCreatedBy(SecurityUtils.getCurrentUser().getUsername());
 		takeVacationDetail.setEndDate(takeVacationDetailDTO.getEndDate());
 		takeVacationDetail.setStartDate(takeVacationDetailDTO.getStartDate());
-		takeVacationDetail.setStatus(takeVacationDetailDTO.getStatus());
+		takeVacationDetail.setStatus(takeVacationDetailDTO.getStatus().ordinal());
 		takeVacationDetail.setTimeLength(takeVacationDetailDTO.getTimeLength());
 		log.debug("Modify Information for takeVacationDetail: {}", takeVacationDetail);
 		return takeVacationDetail;
 	}
 
-	public Page<TakeVacationDetail> page(TakeVacationDetailDTO takeVacationDetailDTO,Pageable page) {
+	public Page<TakeVacationDetail> page(TakeVacationDetailDTO takeVacationDetailDTO, Pageable page) {
 
 		return takeVacationDetailRepository.findAll(new Specification<TakeVacationDetailDTO>() {
 			@Override
-			public Predicate toPredicate(Root<TakeVacationDetailDTO> root, javax.persistence.criteria.CriteriaQuery<?> query,
-					CriteriaBuilder cb) {
+			public Predicate toPredicate(Root<TakeVacationDetailDTO> root,
+					javax.persistence.criteria.CriteriaQuery<?> query, CriteriaBuilder cb) {
 				Path<String> namePath = root.get("name");
 				Path<String> nicknamePath = root.get("nickname");
 				query.where(cb.like(namePath, "%李%"), cb.like(nicknamePath, "%王%")); // 这里可以设置任意条查询条件
@@ -77,39 +81,64 @@ public class TakeVacationDetailService {
 
 		}, page);
 
-
 	}
 
 	public Page<TakeVacationDetail> findAll(Pageable pageable) {
 
 		return takeVacationDetailRepository.findAll(pageable);
 	}
-	
-	  @Transactional(readOnly = true)
-    public TakeVacationDetail findTakeVacationDetailById(Long id) {
-		  TakeVacationDetail takeVacationDetail = takeVacationDetailRepository.findOne(id);
-//		  workOvertime.getAuthorities().size(); // eagerly load the association
-        return takeVacationDetail;
-    }
-	  @Transactional(readOnly = true)
-	public TakeVacationDetail updateTakeVacationDetailById(TakeVacationDetailDTO takeVacationDetailDTO) {
-		  TakeVacationDetail  takeVacationDetail= takeVacationDetailRepository.findOne(takeVacationDetailDTO.getId());
-		  takeVacationDetail.setStartDate(takeVacationDetailDTO.getStartDate());
-		  takeVacationDetail.setEndDate(takeVacationDetailDTO.getEndDate());
-		  takeVacationDetail.setRemark(takeVacationDetailDTO.getRemark());
-		  Long temp = takeVacationDetailDTO.getEndDate().getTime() - takeVacationDetailDTO.getStartDate().getTime();    //相差毫秒数
-	      Long hours = temp / 1000 / 3600;        //相差小时数
-		  takeVacationDetail.setTimeLength(hours.intValue());
-		  takeVacationDetail.setStatus(takeVacationDetailDTO.getStatus());
-		  takeVacationDetailRepository.save(takeVacationDetail);
+
+	@Transactional(readOnly = true)
+	public TakeVacationDetail findTakeVacationDetailById(Long id) {
+		TakeVacationDetail takeVacationDetail = takeVacationDetailRepository.findOne(id);
+		// workOvertime.getAuthorities().size(); // eagerly load the association
 		return takeVacationDetail;
 	}
-	  
-	  public void deleteTakeVacationDetail(Long id) {
-	        takeVacationDetailRepository.findOneById(id).ifPresent(u -> {
-	        	takeVacationDetailRepository.delete(u);
-	            log.debug("Deleted User: {}", u);
-	        });
-	    }
+
+	@Transactional(readOnly = true)
+	public TakeVacationDetail updateTakeVacationDetailById(TakeVacationDetailDTO takeVacationDetailDTO) {
+		TakeVacationDetail takeVacationDetail = takeVacationDetailRepository.findOne(takeVacationDetailDTO.getId());
+		takeVacationDetail.setStartDate(takeVacationDetailDTO.getStartDate());
+		takeVacationDetail.setEndDate(takeVacationDetailDTO.getEndDate());
+		takeVacationDetail.setRemark(takeVacationDetailDTO.getRemark());
+		Long temp = takeVacationDetailDTO.getEndDate().getTime() - takeVacationDetailDTO.getStartDate().getTime(); // 相差毫秒数
+		Long hours = temp / 1000 / 3600; // 相差小时数
+		takeVacationDetail.setTimeLength(hours.intValue());
+		takeVacationDetail.setStatus(EStatus.APPLY.ordinal());
+		takeVacationDetailRepository.save(takeVacationDetail);
+		return takeVacationDetail;
+	}
+
+	public void deleteTakeVacationDetail(Long id) {
+		takeVacationDetailRepository.findOneById(id).ifPresent(u -> {
+			takeVacationDetailRepository.delete(u);
+			log.debug("Deleted User: {}", u);
+		});
+	}
+
+	/**
+	 * 审核对象
+	 * 
+	 * @param id
+	 */
+	@Transactional
+	public void verify(Long id, TakeVacationDetailDTO takeVacationDetailDTO) {
+		//
+		TakeVacationDetail t = takeVacationDetailRepository.findOne(id);
+		if (t.getStatus() != local.tux.app.web.rest.dto.oa.TakeVacationDetailDTO.EStatus.APPLY.ordinal()){
+			return;
+		}
+		int row = takeVacationDetailRepository.updateStatusByKey(takeVacationDetailDTO.getStatus().ordinal(),takeVacationDetailDTO.getRemark()==null?"":takeVacationDetailDTO.getRemark(), id);
+		// 如果审核通过，更新汇总表
+		if (row == 1 && takeVacationDetailDTO
+				.getStatus() == local.tux.app.web.rest.dto.oa.TakeVacationDetailDTO.EStatus.PASS) {
+			TakeVacationDTO dto = new TakeVacationDTO();
+			dto.setUserName(t.getCreatedBy());
+			dto.setTVHourLength(t.getTimeLength());
+			
+			takeVacationService.updateTakeVacationById(dto);
+		}
+
+	}
 
 }

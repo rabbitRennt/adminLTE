@@ -16,7 +16,7 @@ angular.module('tuxAdminApp')
 			
 			    $scope.save = function () {
 			    	$scope.takeVacationDetail.status=0;
-			     takeVacationDetailService.update($scope.takeVacationDetail, onSaveSuccess, onSaveError);
+			     takeVacationDetailService.patch($scope.takeVacationDetail, onSaveSuccess, onSaveError);
 			    };
 			    $scope.clear = function() {
 			        $uibModalInstance.dismiss('cancel');
