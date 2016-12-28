@@ -1,4 +1,4 @@
-package local.tux.app.web.rest.dto.oa;
+package local.tux.app.web.rest.dto;
 
 import java.util.Date;
 
