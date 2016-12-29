@@ -48,7 +48,9 @@
                 <td>{{x.startDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{x.endDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{x.timeLength}}</td>
-                <td>{{x.status}}</td>
+                <td ng-if="x.status==0">审批中</td>
+                <td ng-if="x.status==1">通过</td>
+                <td ng-if="x.status==2">驳回</td>
                 <td>{{x.remark}}</td>
                 <td has-authority="ROLE_ADMIN">
                     <button type="submit" ng-click="pass({'id':x.id,'status':1})" ng-show="x.status == 0"
