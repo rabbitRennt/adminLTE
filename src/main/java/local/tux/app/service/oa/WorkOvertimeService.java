@@ -104,12 +104,12 @@ public class WorkOvertimeService {
 		workOvertime.setTimeLength(hours.intValue());
 		workOvertime.setStatus(EStatus.APPLY.ordinal());
 		workOvertime.setRemark(workOvertimeDTO.getRemark());
-		
+
 		workOvertimeRepository.save(workOvertime);
 		// workOvertimeRepository.saveAndFlush(workOvertime);
 		return workOvertime;
 	}
-	
+
 	@Transactional
 	public void deleteWorkOvertimeInformation(Long id) {
 		workOvertimeRepository.findOneById(id).ifPresent(u -> {
@@ -124,8 +124,10 @@ public class WorkOvertimeService {
 		if (t.getStatus() != EStatus.APPLY.ordinal()) {
 			return;
 		}
-		int row = workOvertimeRepository.updateStatusByKey(workOvertimeDTO.getStatus().ordinal(),
-				workOvertimeDTO.getRemark() == null ? "" : workOvertimeDTO.getRemark(), workOvertimeDTO.getId());
+		int row = workOvertimeRepository.updateStatusByKey(
+				workOvertimeDTO.getStatus().ordinal(), workOvertimeDTO.getRemark() == null
+						? (t.getRemark() == null ? "" : t.getRemark()) : workOvertimeDTO.getRemark(),
+				workOvertimeDTO.getId());
 		// 如果审核通过，更新汇总表
 		if (row == 1 && workOvertimeDTO.getStatus() == EStatus.PASS) {
 

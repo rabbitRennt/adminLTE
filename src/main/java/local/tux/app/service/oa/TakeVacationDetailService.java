@@ -143,7 +143,7 @@ public class TakeVacationDetailService {
 		}
 		
 		int row = takeVacationDetailRepository.updateStatusByKey(takeVacationDetailDTO.getStatus().ordinal(),
-				takeVacationDetailDTO.getRemark() == null ? "" : takeVacationDetailDTO.getRemark(), id);
+				takeVacationDetailDTO.getRemark() == null ? (t.getRemark()==null?"":t.getRemark()) : takeVacationDetailDTO.getRemark(), id);
 		// 如果审核通过，更新汇总表
 		if (row == 1 && takeVacationDetailDTO.getStatus() == EStatus.PASS) {
 			takeVacationService.updateById4TakeVacation(t.getCreatedBy(), t.getTimeLength());
