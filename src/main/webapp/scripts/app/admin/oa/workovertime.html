@@ -1,23 +1,22 @@
-<section class="content-header">
-      <h1>
-                    加班管理
-      <small>advanced tables</small>
+<!-- <section class="content-header">
+      <h1 translate="oa-workOvertime.home.title">
+      WorkOvertime Management
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
         <li class="active">Data tables</li>
       </ol>
-    </section>
+    </section> -->
 
 <div>
-    <h2 translate="pageTitle">Workovertime</h2>
+    <h2 translate="oa-workOvertime.home.title">Workovertime</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
           <div class="col-md-4">
               <button class="btn btn-primary" ui-sref="oa-workovertime.new">
-                  <span class="glyphicon glyphicon-flash"></span> <span translate="创建一条加班记录">Create a new User</span>
+                  <span class="glyphicon glyphicon-flash"></span> <span translate="oa-workOvertime.home.createLabel">Create a new User</span>
               </button>
           </div>
         </div>
@@ -27,20 +26,20 @@
             <thead>
             <tr>
                 <th translate="global.field.id">ID</th>
-                <th translate="姓名">createdBy</th>
-                <th translate="创建时间">createdDate</th>
-                <th translate="加班开始时间">startDate</th>
-                <th translate="加班结束时间">endDate</th>
-                <th translate="加班时长(H)">timeLength</th>
-                <th translate="审批状态">status</th>
-                <th translate="说明">remark</th>
+                <th translate="oa-workOvertime.createdBy">createdBy</th>
+                <th translate="oa-workOvertime.createdDate">createdDate</th>
+                <th translate="oa-workOvertime.startDate">startDate</th>
+                <th translate="oa-workOvertime.endDate">endDate</th>
+                <th translate="oa-workOvertime.timeLength">timeLength</th>
+                <th translate="oa-workOvertime.status">status</th>
+                <th translate="oa-workOvertime.remark">remark</th>
                 <!-- <th has-authority="ROLE_ADMIN" translate="审批"></th> -->
-                <th translate="操作"></th>
+                <th translate="oa-workOvertime.action"></th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="x in workovertimes track by x.id">
-                <td><{{x.id}}</a></td>
+                <td>{{x.id}}</a></td>
                 <td>{{x.createdBy}}</td>
                 <td>{{x.createdDate | date:'dd/MM/yy HH:mm'}}</td>
                
@@ -54,11 +53,11 @@
                 <td>
                     <button has-authority="ROLE_ADMIN" type="submit" ng-click="pass({'id':x.id,'status':1})" ng-show="x.status == 0"
                             class="btn btn-info btn-sm">
-                        <span class="glyphicon glyphicon-eye-open">通过</span>
+                        <span class="glyphicon glyphicon-eye-open" translate="oa-workOvertime.pass">Pass</span>
                     </button>
                     <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-workovertime.update({id:x.id})" ng-show="x.status == 0"
                             class="btn btn-primary btn-sm">
-                        <span class="glyphicon glyphicon-pencil">不通过</span>
+                        <span class="glyphicon glyphicon-pencil" translate="oa-workOvertime.notGo">Not go</span>
                     </button>
                 
                     <button type="submit"

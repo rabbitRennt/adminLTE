@@ -1,0 +1,30 @@
+{
+    "oa-takeVacationDetail": {
+        "home": {
+            "title": "调休时间",
+            "createLabel": "创建一条调休记录",
+            "createOrEditLabel": "创建或编辑调休时间"
+        },
+        "created": "创建调休时间的信息列表{{ param }}",
+        "updated": "编辑调休时间的信息列表 {{ param }}",
+        "deleted": "删除调休时间的信息列表{{ param }}",
+        "delete": {
+            "question": "你确定想去删除调休记录{{ id }}?"
+        },
+        "detail": {
+            "title": "调休时间"
+        },
+        "createdBy": "姓名",
+        "createdDate": "创建时间",
+        "startDate": "调休开始时间",
+        "endDate": "调休结束时间",
+        "timeLength": "调休时长(H)",
+        "status": "审批状态",
+        "remark": "说明",
+        "approval": "审批",
+        "action": "操作",
+        "pass": "通过",
+        "notGo": "不通过"
+       
+    }
+}

@@ -1,6 +1,6 @@
-<section class="content-header">
-      <h1>
-                    加班管理
+<!-- <section class="content-header">
+      <h1 translate="oa-takeVacationDetail.home.title">
+      My TakeVacation
       <small>advanced tables</small>
       </h1>
       <ol class="breadcrumb">
@@ -8,16 +8,16 @@
         <li><a href="#">Tables</a></li>
         <li class="active">Data tables</li>
       </ol>
-    </section>
+    </section> -->
 
 <div>
-    <h2 translate="pageTitle">TakeVacationDetail</h2>
+    <h2 translate="oa-takeVacationDetail.home.title">TakeVacationDetail</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
           <div class="col-md-4">
               <button class="btn btn-primary" ui-sref="oa-takeVacationDetail.new">
-                  <span class="glyphicon glyphicon-flash"></span> <span translate="创建一条加班记录">Create a new User</span>
+                  <span class="glyphicon glyphicon-flash"></span> <span translate="oa-takeVacationDetail.home.createLabel">Create a new vacation</span>
               </button>
           </div>
         </div>
@@ -27,6 +27,17 @@
             <thead>
             <tr>
                 <th translate="global.field.id">ID</th>
+<<<<<<< HEAD
+                <th translate="oa-takeVacationDetail.createdBy">createdBy</th>
+                <th translate="oa-takeVacationDetail.createdDate">createdDate</th>
+                <th translate="oa-takeVacationDetail.startDate">startDate</th>
+                <th translate="oa-takeVacationDetail.endDate">endDate</th>
+                <th translate="oa-takeVacationDetail.timeLength">timeLength</th>
+                <th translate="oa-takeVacationDetail.status">status</th>
+                <th translate="oa-takeVacationDetail.remark">remark</th>
+                
+                <th has-authority="ROLE_USER" translate="oa-takeVacationDetail.action"></th>
+=======
                 <th translate="姓名">createdBy</th>
                 <th translate="创建时间">createdDate</th>
                 <th translate="加班开始时间">startDate</th>
@@ -36,12 +47,13 @@
                 <th translate="说明">remark</th>
                 
                 <th has-authority="ROLE_USER" translate="操作"></th>
+>>>>>>> aa90c6d80a154603a8ac13d8311626d6c035061e
                 
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="x in takeVacationDetails track by x.id">
-                <td><{{x.id}}</a></td>
+                <td>{{x.id}}</a></td>
                 <td>{{x.createdBy}}</td>
                 <td>{{x.createdDate | date:'dd/MM/yy HH:mm'}}</td>
                
@@ -55,11 +67,11 @@
                 <td>
                     <button has-authority="ROLE_ADMIN" type="submit" ng-click="pass({'id':x.id,'status':1})" ng-show="x.status == 0"
                             class="btn btn-info btn-sm">
-                        <span class="glyphicon glyphicon-eye-open">通过</span>
+                        <span class="glyphicon glyphicon-eye-open" translate="oa-takeVacationDetail.pass">Pass</span>
                     </button>
                     <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-takeVacationDetail.update({id:x.id})" ng-show="x.status == 0"
                             class="btn btn-primary btn-sm">
-                        <span class="glyphicon glyphicon-pencil">不通过</span>
+                        <span class="glyphicon glyphicon-pencil" translate="oa-takeVacationDetail.notGo">Not go</span>
                     </button>
                     
                     <button type="submit"

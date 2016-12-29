@@ -31,19 +31,21 @@
                	<i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
            	</a>
             <ul class="treeview-menu">
-                <li class="active"><a href="#/index"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li ><a ui-sref="oa-workovertime" ><i class="fa fa-circle-o"></i>我的加班</a></a></li>
-                <li ><a ui-sref="oa-takeVacationDetail"><i class="fa fa-circle-o"></i>我的调休</a></a></li>                    
-                <li><a href=""><i class="fa fa-circle-o"></i> Dashboard v21111111</a></li>
+               
+                <li ><a ui-sref="oa-workovertime" ><i class="fa fa-circle-o"></i><span translate="global.menu.admin.oa-workOvertime">My WorkOvertime</span></a></li>
+                <li ><a ui-sref="oa-takeVacationDetail"><i class="fa fa-circle-o"></i><span translate="global.menu.admin.oa-takeVacationDetail">My ChangeRest</span></a></li>                    
+                
             </ul>
         </li>
 
     </ul>
     
+   
+    
     
     <ul class="sidebar-menu" ng-switch="isAuthenticated()" has-authority="ROLE_ADMIN">
-        <li class="header">MAIN NAVIGATION</li>
-        <li ng-class="{active: $state.includes('admin')}" class="treeview" id="administration" ng-switch-when="true">
+
+        <li class="treeview" id="administration" ng-switch-when="true">
             <a href="#" ng-click="setActive('administration')">
                 <i class="fa fa-dashboard"></i> <span>Administration</span> <i class="fa fa-angle-left pull-right"></i>
             </a>

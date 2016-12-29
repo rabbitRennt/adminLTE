@@ -1,18 +1,18 @@
 {
-    "oa-workovertime": {
+    "oa-workOvertime": {
         "home": {
-            "title": "Workovertime",
-            "createLabel": "Create a new user",
-            "createOrEditLabel": "Create or edit a workovertime"
+            "title": "WorkOvertime Time",
+            "createLabel": "Create a WorkOvertime",
+            "createOrEditLabel": "Create or edit a WorkOvertime"
         },
-        "created": "A new user is created with identifier {{ param }}",
-        "updated": "An user is updated with identifier {{ param }}",
-        "deleted": "An user is deleted with identifier {{ param }}",
+        "created": "A new WorkOvertime is created with identifier {{ param }}",
+        "updated": "An WorkOvertime is updated with identifier {{ param }}",
+        "deleted": "An WorkOvertime is deleted with identifier {{ param }}",
         "delete": {
-            "question": "Are you sure you want to delete workovertime {{ id }}?"
+            "question": "Are you sure you want to delete WorkOvertime {{ id }}?"
         },
         "detail": {
-            "title": "Workovertime"
+            "title": "WorkOvertime Identifier"
         },
         "createdBy": "Created by",
         "createdDate": "Created date",
@@ -20,7 +20,9 @@
         "endDate": "End date",
         "timeLength": "Time length(H)",
         "status": "Status",
-        "remark": "Remark"
-       
+        "remark": "Remark",
+        "action": "Action",
+        "pass": "PASS",
+        "notGo": "NOT GO"
     }
 }

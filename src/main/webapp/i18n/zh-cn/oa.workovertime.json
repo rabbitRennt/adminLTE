@@ -1,18 +1,18 @@
 {
-    "oa-workovertime": {
+    "oa-workOvertime": {
         "home": {
             "title": "加班时间",
-            "createLabel": "创建一个新的用户",
+            "createLabel": "创建加班时间",
             "createOrEditLabel": "创建或编辑加班时间"
         },
-        "created": "创建新用户的信息列表{{ param }}",
-        "updated": "编辑用户的信息列表 {{ param }}",
-        "deleted": "删除用户的信息列表 {{ param }}",
+        "created": "创建加班时间的信息列表{{ param }}",
+        "updated": "编辑加班时间的信息列表 {{ param }}",
+        "deleted": "删除加班时间的信息列表 {{ param }}",
         "delete": {
             "question": "你确定想去删除加班时间{{ id }} ？"
         },
         "detail": {
-            "title": "加班时间"
+            "title": "加班信息列表"
         },
         "createdBy": "姓名",
         "createdDate": "创建时间",
@@ -20,7 +20,10 @@
         "endDate": "加班结束时间",
         "timeLength": "加班时长(H)",
         "status": "审批状态",
-        "remark": "说明"
+        "remark": "说明",
+        "action": "操作",
+        "pass": "通过",
+        "notGo": "不通过"
        
     }
 }

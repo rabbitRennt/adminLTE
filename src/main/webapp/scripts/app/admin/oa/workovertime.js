@@ -18,7 +18,7 @@ angular.module('tuxAdminApp')
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('configuration');
+                        $translatePartialLoader.addPart('oa.workovertime');
                         return $translate.refresh();
                     }]
                 }
@@ -38,7 +38,7 @@ angular.module('tuxAdminApp')
 	            },
 	            resolve: {
 	                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-	                    $translatePartialLoader.addPart('configuration');
+	                    $translatePartialLoader.addPart('oa.workovertime');
 	                    return $translate.refresh();
 	                }]
 	            }
@@ -111,7 +111,7 @@ angular.module('tuxAdminApp')
                     }).result.then(function(result) {
                         $state.go('oa-workovertime', null, { reload: true });
                     }, function() {
-                        $state.go('oa-workovertime');
+                        $state.go('oa-workOvertime');
                     })
                 }]
             })
@@ -134,7 +134,7 @@ angular.module('tuxAdminApp')
 	                }).result.then(function(result) {
 	                    $state.go('oa-workovertime', null, { reload: true });
 	                }, function() {
-	                    $state.go('oa-workovertime');
+	                    $state.go('oa-workOvertime');
 	                })
 	            }]
 	        });

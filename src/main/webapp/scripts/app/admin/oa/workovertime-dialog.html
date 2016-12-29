@@ -3,8 +3,8 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myUserLabel" translate="user-management.home.createOrEditLabel">
-            Create or edit a User</h4>
+        <h4 class="modal-title" id="myUserLabel" translate="oa-workOvertime.home.createOrEditLabel">
+            Create or edit a WorkOvertime</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label" >姓名</label>
+            <label class="control-label" translate="oa-workOvertime.createdBy">createdBy</label>
             <input type="text" class="form-control" name="createdBy"
                    ng-model="workOvertime.createdBy"  ng-maxlength="50" readonly>
 
@@ -33,7 +33,7 @@
             </div> -->
         </div>
         <div class="form-group">
-            <label >加班开始时间</label>
+            <label translate="oa-workOvertime.startDate">startDate</label>
 			<div class="input-group date">
             	<div class=input-group-addon>
             	<i class="fa fa-calendar"></i>
@@ -44,7 +44,7 @@
            
         </div>
         <div class="form-group">
-            <label class="control-label" >加班结束时间</label>
+            <label class="control-label" translate="oa-workOvertime.endDate">endDate</label>
             <div class="input-group date">
             	<div class=input-group-addon>
             	<i class="fa fa-calendar"></i>
@@ -56,18 +56,22 @@
         
 
         <div class="form-group">
+<<<<<<< HEAD
+            <label translate="oa-workOvertime.timeLength">timeLength(H)</label>
+=======
             <label >加班时长(H)</label>
+>>>>>>> aa90c6d80a154603a8ac13d8311626d6c035061e
             <input type="text" class="form-control" name="timeLength" readonly
                      ng-model="workOvertime.timeLength" ng-maxlength="2">
         </div>
 
         <div class="form-group">
-            <label >审批状态</label>
+            <label translate="oa-workOvertime.status">status</label>
             <input type="text" class="form-control" name="status"
                    ng-model="workOvertime.status" ng-maxlength="50" readonly>
         </div>
         <div class="form-group">
-            <label >说明</label>
+            <label translate="oa-workOvertime.remark">remark</label>
             <input type="text" class="form-control" name="remark"
                    ng-model="workOvertime.remark" ng-maxlength="50">
 

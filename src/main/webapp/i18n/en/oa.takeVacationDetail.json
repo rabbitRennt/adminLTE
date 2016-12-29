@@ -1,0 +1,30 @@
+{
+    "oa-takeVacationDetail": {
+        "home": {
+            "title": "TakeVacation Time",
+            "createLabel": "Create a new vacation",
+            "createOrEditLabel": "Create or edit a vacation"
+        },
+        "created": "A new vacation is created with identifier {{ param }}",
+        "updated": "An vacation is updated with identifier {{ param }}",
+        "deleted": "An vacation is deleted with identifier {{ param }}",
+        "delete": {
+            "question": "Are you sure you want to delete vacation {{ id }}?"
+        },
+        "detail": {
+            "title": "Vacation"
+        },
+        "createdBy": "Created by",
+        "createdDate": "Created date",
+        "startDate": "Start date",
+        "endDate": "End date",
+        "timeLength": "Time length(H)",
+        "status": "Status",
+        "remark": "Remark",
+        "approval": "Approval",
+        "action": "Action",
+        "pass": "PASS",
+        "notGo": "NOT GO"
+       
+    }
+}

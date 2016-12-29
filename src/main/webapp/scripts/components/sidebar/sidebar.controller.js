@@ -16,8 +16,6 @@ angular.module('tuxAdminApp')
         };
         
         $scope.setActive = function (id) {
-        	$("#signIn").hide();
-        	$("#register").hide();
         	if($("#"+id).attr('class') == "treeview active"){
         		$("#"+id).attr('class','treeview');
         	}else{

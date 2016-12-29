@@ -8,7 +8,7 @@ angular.module('tuxAdminApp')
                 url: '/oa-takeVacationDetail',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'oa-takeVacationDetail.title'
+                    pageTitle: 'oa-takeVacationDetail.home.title'
                 },
                 views: {
                     'content@': {
@@ -18,7 +18,7 @@ angular.module('tuxAdminApp')
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('configuration');
+                        $translatePartialLoader.addPart('oa.takeVacationDetail');
                         return $translate.refresh();
                     }]
                 }
@@ -38,7 +38,7 @@ angular.module('tuxAdminApp')
 	            },
 	            resolve: {
 	                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-	                    $translatePartialLoader.addPart('configuration');
+	                    $translatePartialLoader.addPart('oa.takeVacationDetail');
 	                    return $translate.refresh();
 	                }]
 	            }

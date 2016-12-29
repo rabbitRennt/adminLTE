@@ -28,7 +28,9 @@
                 "logs": "日志",
                 "audits": "审核",
                 "apidocs": "API",
-                "database": "数据库"
+                "database": "数据库",
+                "oa-workOvertime": "我的加班",
+                "oa-takeVacationDetail": "我的调休"
             },
             "language": "语言"
         },
