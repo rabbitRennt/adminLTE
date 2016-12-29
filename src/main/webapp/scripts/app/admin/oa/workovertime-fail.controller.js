@@ -16,7 +16,7 @@ angular.module('tuxAdminApp')
 			
 			    $scope.save = function () {
 			    	$scope.workOvertime.status=2;
-			    	WorkOvertimeService.update($scope.workOvertime, onSaveSuccess, onSaveError);
+			    	WorkOvertimeService.patch($scope.workOvertime, onSaveSuccess, onSaveError);
 			    };
 			    $scope.clear = function() {
 			        $uibModalInstance.dismiss('cancel');
