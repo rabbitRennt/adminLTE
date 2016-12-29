@@ -19,6 +19,8 @@ public class WorkOvertimeDTO {
 	private Integer timeLength; // '时长(H)',
 	private String remark;
 
+	private String createdBy; // '加班早请人',
+
 	public Long getId() {
 		return id;
 	}
@@ -65,6 +67,14 @@ public class WorkOvertimeDTO {
 
 	public void setStatus(EStatus status) {
 		this.status = status;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 
 }

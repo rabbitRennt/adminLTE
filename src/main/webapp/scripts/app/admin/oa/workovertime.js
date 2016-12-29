@@ -47,7 +47,7 @@ angular.module('tuxAdminApp')
                 parent: 'admin',
                 url: '/oa/new',
                 data: {
-                    authorities: ['ROLE_ADMIN'],
+                    authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -73,7 +73,7 @@ angular.module('tuxAdminApp')
             parent: 'admin',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_ADMIN'],
+                authorities: ['ROLE_USER'],
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -96,7 +96,7 @@ angular.module('tuxAdminApp')
                 parent: 'oa-workovertime',
                 url: '/oa/{id}/delete',
                 data: {
-                    authorities: ['ROLE_ADMIN'],
+                    authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -115,9 +115,9 @@ angular.module('tuxAdminApp')
                     })
                 }]
             })
-            .state('oa-workovertime.update', {
+            .state('oa-workovertime.noPass', {
 	            parent: 'admin',
-	            url: '/oa/{id}/update',
+	            url: '/oa/{id}/noPass',
 	            data: {
 	                authorities: ['ROLE_ADMIN'],
 	            },

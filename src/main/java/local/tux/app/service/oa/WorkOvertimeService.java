@@ -1,7 +1,5 @@
 package local.tux.app.service.oa;
 
-import java.util.Optional;
-
 import javax.inject.Inject;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Path;
@@ -16,8 +14,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import local.tux.app.domain.User;
-import local.tux.app.domain.oa.TakeVacation;
 import local.tux.app.domain.oa.WorkOvertime;
 import local.tux.app.repository.WorkOvertimeRepository;
 import local.tux.app.security.SecurityUtils;
@@ -89,7 +85,15 @@ public class WorkOvertimeService {
 	public Page<WorkOvertime> findAll(Pageable pageable) {
 		return workOvertimeRepository.findAll(pageable);
 	}
+	public Page<WorkOvertime> findByCreatedBy(String createdBy,Pageable pageable) {
+		
+		return workOvertimeRepository.findByCreatedBy(createdBy,pageable);
+	}
 
+	
+
+    
+    
 	public WorkOvertime findWorkOvertimeById(Long id) {
 		WorkOvertime workOvertime = workOvertimeRepository.findOne(id);
 		return workOvertime;

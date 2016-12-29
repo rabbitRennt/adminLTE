@@ -31,6 +31,7 @@ import local.tux.app.domain.User;
 import local.tux.app.domain.oa.WorkOvertime;
 import local.tux.app.repository.WorkOvertimeRepository;
 import local.tux.app.security.AuthoritiesConstants;
+import local.tux.app.security.SecurityUtils;
 import local.tux.app.service.oa.WorkOvertimeService;
 import local.tux.app.web.rest.dto.ManagedUserDTO;
 import local.tux.app.web.rest.dto.oa.WorkOvertimeDTO;
@@ -103,7 +104,6 @@ public class WorkOvertimeResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
-    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<WorkOvertime> updateWorkOvertimeById(@RequestBody WorkOvertimeDTO workOvertimeDTO) throws URISyntaxException {
         log.debug("REST request to update WorkOvertime : {}", workOvertimeDTO);
         
@@ -124,7 +124,13 @@ public class WorkOvertimeResource {
 	@Timed
 	@Transactional(readOnly = true)
 	public ResponseEntity<List<WorkOvertime>> getAllWorkOvertime(Pageable pageable) throws URISyntaxException {
-		Page<WorkOvertime> page = workOvertimeService.findAll(pageable); 
+		Page<WorkOvertime> page=null;
+		if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)){
+			page = workOvertimeService.findAll(pageable); 
+		}else{
+			page = workOvertimeService.findByCreatedBy(SecurityUtils.getCurrentUserLogin(), pageable); 
+		}
+		
 		List<WorkOvertime> workOvertime = page.getContent();
 		log.debug(" ");
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/workOvertime");
@@ -152,7 +158,6 @@ public class WorkOvertimeResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<Void> deleteWorkOvertime(@PathVariable Long id) {
         log.debug("REST request to delete workOvertime: {}", id);
         workOvertimeService.deleteWorkOvertimeInformation(id);

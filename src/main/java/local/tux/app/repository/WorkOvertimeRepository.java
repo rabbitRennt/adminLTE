@@ -28,4 +28,6 @@ public interface WorkOvertimeRepository extends JpaRepository<WorkOvertime, Long
 	@Query("update WorkOvertime set status = :status ,remark = :remark  where id = :id")
 	int updateStatusByKey(@Param("status") Integer status,@Param("remark") String remark,  @Param("id") Long id);
 
+	Page<WorkOvertime> findByCreatedBy(String createdBy, Pageable pageable);
+
 }
