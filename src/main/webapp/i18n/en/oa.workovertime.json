@@ -23,6 +23,8 @@
         "remark": "Remark",
         "action": "Action",
         "pass": "PASS",
-        "notGo": "NOT GO"
+        "notGo": "NOT GO",
+        "reject": "REJECT",
+        "approval": "APPROVAL"
     }
 }

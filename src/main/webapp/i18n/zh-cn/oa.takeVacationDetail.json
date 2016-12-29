@@ -21,10 +21,11 @@
         "timeLength": "调休时长(H)",
         "status": "审批状态",
         "remark": "说明",
-        "approval": "审批",
         "action": "操作",
         "pass": "通过",
-        "notGo": "不通过"
+        "notGo": "不通过",
+        "reject": "驳回",
+        "approval": "审核中"
        
     }
 }
