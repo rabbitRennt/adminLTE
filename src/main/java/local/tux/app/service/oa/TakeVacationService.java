@@ -87,7 +87,7 @@ public class TakeVacationService {
 		TakeVacation t = takeVacationRepository.findOneByUserId(user.get().getId());
 		if (t == null)
 			return 0;
-		return t.getUsable();
+		return t.getUsable().intValue();
 	}
 
 }
