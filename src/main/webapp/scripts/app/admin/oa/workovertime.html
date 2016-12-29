@@ -8,9 +8,74 @@
         <li class="active">Data tables</li>
       </ol>
     </section> -->
-
+   
+ 
 <div>
     <h2 translate="oa-workOvertime.home.title">Workovertime</h2>
+    <div>
+          <div class="box box-default collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Search  Workovertime</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            	<form name="searchForm" role="form" novalidate ng-submit="search()" show-validation>
+		            <label translate="global.field.id">ID</label>
+		            <input type="text" name="id"  ng-model="workOvertime.id" >
+		            
+		            &nbsp; &nbsp; &nbsp;
+		             <label translate="oa-workOvertime.createdBy">createdBy</label>
+		            <input type="text" name="createdBy"  ng-model="workOvertime.createdBy" >
+		            
+		            &nbsp; &nbsp; &nbsp;
+		            
+		            <label translate="oa-workOvertime.timeLength">timeLength(H)</label>
+		            <input type="text"  name="timeLength" 
+		                     ng-model="workOvertime.timeLength" ng-maxlength="2">
+		            &nbsp; &nbsp; &nbsp;
+		           <!--  <label translate="oa-workOvertime.status">status</label>
+	            	<select name="authority" ng-model="workOvertime.status"
+	                    ng-options="authority for authority in authorities">
+	            	</select>
+            		 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
+            		<button type="submit"  class="btn btn-primary">
+			            <span class="glyphicon glyphicon-search"></span>&nbsp;<span translate="entity.action.search">Search</span>
+			        </button>
+			        
+		        <div class="form-group">
+		            <label translate="oa-workOvertime.startDate">startDate</label>
+					<div class="input-group date">
+	            		<div class="input-group-addon">
+	            			<i class="fa fa-calendar"></i>
+	            		</div>
+            			<input type="text" class="form-control pull-right" name="startDate" id="datepicker"
+                   			ng-model="workOvertime.startDate" ng-click="load()" >
+            		</div>
+       			</div>
+		  		<div class="form-group">
+		            <label class="control-label" translate="oa-workOvertime.endDate">endDate</label>
+		            <div class="input-group date">
+		            	<div class=input-group-addon>
+		            		<i class="fa fa-calendar"></i>
+		            	</div>
+		            	<input type="text" class="form-control pull-right" name="endDate" id="datepicker2"
+		                    ng-model="workOvertime.endDate" ng-click="load2()"  >
+		            </div>
+		       </div>
+		       
+              </form>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+   </div>
+   <br/>
+   
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
@@ -21,6 +86,7 @@
           </div>
         </div>
     </div>
+    
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>

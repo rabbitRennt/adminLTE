@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +25,6 @@ public class TakeVacationService {
 
 	@Inject
 	private TakeVacationRepository takeVacationRepository;
-
 	@Inject
 	private UserRepository userRepository;
 
@@ -81,13 +82,27 @@ public class TakeVacationService {
 		}
 
 	}
+	public Page<TakeVacation> findAll(Pageable pageable) {
 
+		return takeVacationRepository.findAll(pageable);
+	}
+	
+	public Page<TakeVacation> findByCreatedBy(String createdBy,Pageable pageable) {
+		
+		return takeVacationRepository.findByCreatedBy(createdBy,pageable);
+	}
 	public int checkUsableTimeByUserNmae(String username) {
 		Optional<User> user = userRepository.findOneByLogin(username);
 		TakeVacation t = takeVacationRepository.findOneByUserId(user.get().getId());
 		if (t == null)
 			return 0;
 		return t.getUsable().intValue();
+	}
+
+	public TakeVacation findOneByLogin(String currentUserLogin) {
+		Optional<User> user = userRepository.findOneByLogin(currentUserLogin);
+		TakeVacation t = takeVacationRepository.findOneByUserId(user.get().getId());
+		return t;
 	}
 
 }

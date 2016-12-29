@@ -16,8 +16,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import local.tux.app.domain.User;
-import local.tux.app.domain.oa.TakeVacation;
 import local.tux.app.domain.oa.TakeVacationDetail;
 import local.tux.app.repository.TakeVacationDetailRepository;
 import local.tux.app.security.SecurityUtils;
@@ -90,7 +88,11 @@ public class TakeVacationDetailService {
 
 		return takeVacationDetailRepository.findAll(pageable);
 	}
-
+		
+	public Page<TakeVacationDetail> findByCreatedBy(String createdBy,Pageable pageable) {
+		
+		return takeVacationDetailRepository.findByCreatedBy(createdBy,pageable);
+	}
 	@Transactional(readOnly = true)
 	public TakeVacationDetail findTakeVacationDetailById(Long id) {
 		TakeVacationDetail takeVacationDetail = takeVacationDetailRepository.findOne(id);

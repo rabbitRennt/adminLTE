@@ -1,14 +1,10 @@
 package local.tux.app.web.rest.oa;
 
-import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -31,19 +27,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
 
-import local.tux.app.domain.Authority;
-import local.tux.app.domain.User;
 import local.tux.app.domain.oa.TakeVacationDetail;
-import local.tux.app.domain.oa.WorkOvertime;
-import local.tux.app.repository.AuthorityRepository;
-import local.tux.app.repository.TakeVacationDetailRepository;
-import local.tux.app.repository.UserRepository;
-import local.tux.app.repository.search.UserSearchRepository;
 import local.tux.app.security.AuthoritiesConstants;
-import local.tux.app.service.MailService;
-import local.tux.app.service.UserService;
+import local.tux.app.security.SecurityUtils;
 import local.tux.app.service.oa.TakeVacationDetailService;
-import local.tux.app.web.rest.dto.ManagedUserDTO;
+import local.tux.app.service.oa.TakeVacationService;
 import local.tux.app.web.rest.dto.oa.TakeVacationDetailDTO;
 import local.tux.app.web.rest.util.HeaderUtil;
 import local.tux.app.web.rest.util.PaginationUtil;
@@ -92,8 +80,6 @@ public class TakeVacationDetailResource {
 	@Inject
 	private TakeVacationDetailService takeVacationDetailService;
 
-	@Inject
-	private TakeVacationDetailRepository takeVacationDetailRepository;
 
 	/**
 	 * POST /users -> Creates a new user.
@@ -137,7 +123,7 @@ public class TakeVacationDetailResource {
 				.updateTakeVacationDetailById(takeVacationDetailDTO);
 
 		return ResponseEntity.ok()
-				.headers(HeaderUtil.createAlert("user-management.updated", takeVacationDetail.getId().toString()))
+				.headers(HeaderUtil.createAlert("oa-workOvertime.updated", takeVacationDetail.getId().toString()))
 				.body(takeVacationDetail);
 
 	}
@@ -150,13 +136,18 @@ public class TakeVacationDetailResource {
 	@Transactional(readOnly = true)
 	public ResponseEntity<List<TakeVacationDetail>> getAllTakeVacationDetail(Pageable pageable)
 			throws URISyntaxException {
-		Page<TakeVacationDetail> page = takeVacationDetailService.findAll(pageable);
+		Page<TakeVacationDetail> page=null;
+		if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)){
+			page = takeVacationDetailService.findAll(pageable); 
+		}else{
+			page = takeVacationDetailService.findByCreatedBy(SecurityUtils.getCurrentUserLogin(), pageable); 
+		}
+		
 		List<TakeVacationDetail> takeVacationDetail = page.getContent();
 		log.debug(" ");
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/workOvertime");
 		return new ResponseEntity<>(takeVacationDetail, headers, HttpStatus.OK);
 	}
-
 	/**
 	 * GET /users/:login -> get the "login" user.
 	 */
@@ -197,5 +188,5 @@ public class TakeVacationDetailResource {
 		return ResponseEntity.ok()
 				.headers(HeaderUtil.createEntityUpdateAlert("takeVacationDetail.update", takeVacationDetailDTO.getId().toString())).build();
 	}
-
+	
 }

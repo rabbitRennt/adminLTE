@@ -38,4 +38,22 @@ angular.module('tuxAdminApp')
 //            $scope.editForm.$setPristine();
 //            $scope.editForm.$setUntouched();
         };
+        $scope.load = function() {
+              $('#datepicker').datepicker({
+              	autoclose: true,
+              	format: 'yyyy-mm-dd'
+              });
+             
+          };
+          $scope.load2 = function() {
+          	// 	alert(22);
+          	 $('#datepicker2').datepicker({
+               	autoclose: true,
+               	format: 'yyyy-mm-dd'
+               });
+          };
+          $scope.search = function () {
+            //  $scope.isSaving = true;
+        	  WorkOvertimeService.search($scope.workOvertime);
+          };
     });

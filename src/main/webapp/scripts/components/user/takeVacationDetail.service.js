@@ -16,4 +16,16 @@ angular.module('tuxAdminApp')
                 'delete':{ method:'DELETE'},
                 'patch':{method:'PATCH'}
             });
+        })
+	.factory('takeVacationService', function ($resource) {
+        return $resource('api/takeVacation/:id', {}, {
+                'query': {method: 'GET'},
+                'get': {
+                    method: 'GET',
+                    transformResponse: function (data) {
+                        data = angular.fromJson(data);
+                        return data;
+                    }
+                }
+            });
         });

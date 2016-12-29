@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('tuxAdminApp')
-    .controller('takeVacationDetailController', function ($scope, takeVacationDetailService, ParseLinks,$uibModal) {
+    .controller('takeVacationDetailController', function ($scope, takeVacationDetailService,takeVacationService, ParseLinks,$uibModal) {
     	
     	$scope.takeVacationDetails = [];
+    	$scope.takeVacation = {};
         $scope.authorities = ["ROLE_USER", "ROLE_ADMIN"];
 
         $scope.page = 1;
@@ -13,12 +14,15 @@ angular.module('tuxAdminApp')
                 $scope.totalItems = headers('X-Total-Count');
                 $scope.takeVacationDetails = result;
             });
+        	takeVacationService.query(function (result, headers) {
+                $scope.takeVacation = result;
+            });
         };
 
         $scope.loadPage = function (page) {
             $scope.page = page;
             $scope.loadAll();
-        };
+        }
         $scope.loadAll();
         console.log($scope.takeVacationDetail);
 
