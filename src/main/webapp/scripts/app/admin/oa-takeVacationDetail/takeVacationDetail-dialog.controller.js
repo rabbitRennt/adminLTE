@@ -32,32 +32,17 @@ angular.module('tuxAdminApp').controller('takeVacationDetailDialogController',
         };
         
         $scope.load3 = function() {
-          //Initialize Select2 Elements
-          //  $(".select2").select2();
-
-            //Datemask dd/mm/yyyy
-            //$("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-            //Datemask2 mm/dd/yyyy
-           // $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-            //Money Euro
-           // $("[data-mask]").inputmask();
-
-            //Date range picker
-            //$('#reservation').daterangepicker();
-            //Date range picker with time picker
-            //$('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-            //Date range as a button
-            $('#datepicker3').datepicker({
+            $('#datepicker3').datetimepicker({
             	autoclose: true,
-            	format: 'yyyy-mm-dd'
+            	format: 'yyyy-mm-dd hh:ii:ss'
             });
            
         };
         $scope.load4 = function() {
         	// 	alert(22);
-        	 $('#datepicker4').datepicker({
+        	 $('#datepicker4').datetimepicker({
              	autoclose: true,
-             	format: 'yyyy-mm-dd'
+             	format: 'yyyy-mm-dd hh:ii:ss'
              });
         }
 }]);
