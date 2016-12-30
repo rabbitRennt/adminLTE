@@ -3,7 +3,6 @@ package local.tux.app.web.rest.oa;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -26,14 +25,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
 
-import local.tux.app.domain.Authority;
-import local.tux.app.domain.User;
 import local.tux.app.domain.oa.WorkOvertime;
 import local.tux.app.repository.WorkOvertimeRepository;
 import local.tux.app.security.AuthoritiesConstants;
 import local.tux.app.security.SecurityUtils;
 import local.tux.app.service.oa.WorkOvertimeService;
-import local.tux.app.web.rest.dto.ManagedUserDTO;
 import local.tux.app.web.rest.dto.oa.WorkOvertimeDTO;
 import local.tux.app.web.rest.util.HeaderUtil;
 import local.tux.app.web.rest.util.PaginationUtil;
