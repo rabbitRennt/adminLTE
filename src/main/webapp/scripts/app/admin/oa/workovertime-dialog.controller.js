@@ -32,33 +32,17 @@ angular.module('tuxAdminApp').controller('WorkovertimeDialogController',
         };
         
         $scope.load = function() {
-          //Initialize Select2 Elements
-          //  $(".select2").select2();
-
-            //Datemask dd/mm/yyyy
-            //$("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-            //Datemask2 mm/dd/yyyy
-           // $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-            //Money Euro
-           // $("[data-mask]").inputmask();
-
-            //Date range picker
-            //$('#reservation').daterangepicker();
-            //Date range picker with time picker
-            //$('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-            //Date range as a button
-        	//	alert(111);
-            $('#datepicker').datepicker({
+            $('#datepicker').datetimepicker({
             	autoclose: true,
-            	format: 'yyyy-mm-dd'
+            	format: 'yyyy-mm-dd hh:ii:ss'
             });
-           
+            
         };
         $scope.load2 = function() {
         	// 	alert(22);
-        	 $('#datepicker2').datepicker({
+        	 $('#datepicker2').datetimepicker({
              	autoclose: true,
-             	format: 'yyyy-mm-dd'
+             	format: 'yyyy-mm-dd hh:ii:ss'
              });
         }
 }]);
