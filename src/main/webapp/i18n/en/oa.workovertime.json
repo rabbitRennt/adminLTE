@@ -25,6 +25,8 @@
         "pass": "PASS",
         "notGo": "NOT GO",
         "reject": "REJECT",
-        "approval": "APPROVAL"
+        "approval": "APPROVAL",
+        "search": "Search",
+        "searchWorkOvertime": "Search WorkOvertime"
     }
 }

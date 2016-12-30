@@ -16,7 +16,12 @@
                 "sessions": "Sessions",
                 "login": "Sign in",
                 "logout": "Sign out",
-                "register": "Register"
+                "register": "Register",
+                "webDeveloper": "Web Developer",
+            	"memberSince": "Member Since",
+            	"followers": "Followers",
+            	"sales": "Sales",
+            	"friends": "Friends"
             },
             "admin": {
                 "main": "Administration",
@@ -32,7 +37,9 @@
                 "oa-workOvertime": "My WorkOvertime",
                 "oa-takeVacationDetail": "My TakeVacation"
             },
-            "language": "Language"
+            "language": "Language",
+            "online": "Online",
+            "workVacation": "Work & Vacation"           
         },
         "form": {
             "username": "Username",

@@ -24,4 +24,5 @@ angular.module('tuxAdminApp')
             Auth.logout();
             $state.go('login');
         };
+        
     });

@@ -25,7 +25,13 @@
         "pass": "通过",
         "notGo": "不通过",
         "reject": "驳回",
-        "approval": "审核中"
+        "approval": "审核中",
+        "search": "查询",
+        "searchWorkOvertime": "查询加班",
+        "vacationRecord": "调休记录",
+        "totalWorkOvertimeTime": "总共加班时间：",
+        "takeVacationTime": "可调休时间：",
+        "takenVacationTime": "已调休时间："
        
     }
 }
