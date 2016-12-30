@@ -5,11 +5,9 @@ angular.module('tuxAdminApp')
         $scope.isAuthenticated = Principal.isAuthenticated;
         $scope.$state = $state;
         $scope.inProduction = ENV === 'prod';
+        $scope.user = Principal.getIdentity();
         
-        $scope.login = "user";
-        $scope.firstName = "";
-    	$scope.lastName = "";
-    	$scope.createdDate = "";
+    	console.log(Principal.getIdentity());
     	
     	$scope.load = function (login) {
             User.get({login: login}, function(result) {
