@@ -1,246 +1,306 @@
 <!doctype html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>tuxAdmin</title>
-        <meta name="description" content="">
-        <meta name="google" value="notranslate">
-        <meta name="viewport" content="width=device-width">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css assets/styles/vendor.css -->
-        <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
-        <link href="bower_components/adf-widget-clock/dist/adf-widget-clock.min.css" rel="stylesheet">
-        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- DataTables -->
-  		
-        <!-- endbower -->
-        <!-- endbuild -->
-        <!-- build:css assets/styles/main.css -->
-        <!--<link rel="stylesheet" href="assets/styles/main.css">-->
-        <!-- <link rel="stylesheet" href="style/tunet.css">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>tuxAdmin</title>
+<meta name="description" content="">
+<meta name="google" value="notranslate">
+<meta name="viewport" content="width=device-width">
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<!-- build:css assets/styles/vendor.css -->
+<!-- bower:css -->
+<link rel="stylesheet"
+	href="bower_components/angular-loading-bar/build/loading-bar.css" />
+<link
+	href="bower_components/adf-widget-clock/dist/adf-widget-clock.min.css"
+	rel="stylesheet">
+<link href="bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- DataTables -->
+
+<!-- endbower -->
+<!-- endbuild -->
+<!-- build:css assets/styles/main.css -->
+<!--<link rel="stylesheet" href="assets/styles/main.css">-->
+<!-- <link rel="stylesheet" href="style/tunet.css">
          -->
-        <link href="bower_components/angular-dashboard-framework/dist/angular-dashboard-framework.min.css" rel="stylesheet">
+<link
+	href="bower_components/angular-dashboard-framework/dist/angular-dashboard-framework.min.css"
+	rel="stylesheet">
 
-        <!-- Theme style -->
-        <link rel="stylesheet" href="bower_components/admin-lte/dist/css/AdminLTE.min.css">
-        <!-- AdminLTE Skins. Choose a skin from the css/skins
+<!-- Theme style -->
+<link rel="stylesheet"
+	href="bower_components/admin-lte/dist/css/AdminLTE.min.css">
+<!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="bower_components/admin-lte/dist/css/skins/_all-skins.min.css">
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-        <!-- endbuild -->
-    </head>
-    <body ng-app="tuxAdminApp" class="hold-transition skin-blue sidebar-mini">
-        <div class="wrappr" ui-view="wrapper">
-        <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
-            <div ui-view="navbar"   ng-cloak="">
-
-                </div>
-            <div ui-view="sidebar" ng-cloak="">
-
-            </div>
-
-
-        <div class="content-wrapper">
-            <section class="content-fluid">
-                <div class="well" ui-view="content"></div>
-            </section>
+<link rel="stylesheet"
+	href="bower_components/admin-lte/dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet"
+	href="bower_components/font-awesome/css/font-awesome.min.css">
+<!-- endbuild -->
+</head>
+<body ng-app="tuxAdminApp"
+	class="hold-transition skin-blue sidebar-mini">
+	<div class="wrappr" ui-view="wrapper">
+		<div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
+		<div ui-view="navbar" ng-cloak=""></div>
+		<div ui-view="sidebar" ng-cloak=""></div>
 
 
-        </div>
-        <div class="main-footer">
-            <p translate="footer">This is your footer</p>
-        </div>
-        </div>
+		<div class="content-wrapper">
+			<section class="content-fluid">
+				<div class="well" ui-view="content"></div>
+			</section>
 
-        <!--
+
+		</div>
+		<div class="main-footer">
+			<footer class="main-footer">
+				<div class="pull-right hidden-xs">
+					<b>Version</b> 2.3.6
+				</div>
+				<strong>Copyright © 2014-2016 <a
+					href="http://www.jumore.com">Almsaeed Studio</a>.
+				</strong> All rights reserved.
+			</footer>
+		</div>
+
+
+
+		<!--
 
         <!-- side bar -->
 
-        <!-- end side bar -->
-          <!--
+		<!-- end side bar -->
+		<!--
 
         -->
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-       <!--  <script src="bower_components/Modernizr/modernizr.custom.js"></script> -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-aria/angular-aria.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
-        <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-        <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="bower_components/angular-translate/angular-translate.js"></script>
-        <script src="bower_components/messageformat/messageformat.js"></script>
-        <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
-        <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
-        <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
-        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-        <script src="bower_components/json3/lib/json3.js"></script>
-        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
-        <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-        <script src="bower_components/sockjs-client/dist/sockjs.js"></script>
-        <script src="bower_components/stomp-websocket/lib/stomp.min.js"></script>
+		<!-- build:js scripts/vendor.js -->
+		<!-- bower:js -->
+		<!--  <script src="bower_components/Modernizr/modernizr.custom.js"></script> -->
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-aria/angular-aria.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script
+			src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+		<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+		<script
+			src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+		<script
+			src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+		<script
+			src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+		<script src="bower_components/angular-resource/angular-resource.js"></script>
+		<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+		<script src="bower_components/angular-translate/angular-translate.js"></script>
+		<script src="bower_components/messageformat/messageformat.js"></script>
+		<script
+			src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+		<script
+			src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+		<script
+			src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+		<script
+			src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script
+			src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+		<script src="bower_components/json3/lib/json3.js"></script>
+		<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+		<script
+			src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+		<script src="bower_components/sockjs-client/dist/sockjs.js"></script>
+		<script src="bower_components/stomp-websocket/lib/stomp.min.js"></script>
 
-        <script src="bower_components/adf-structures-base/dist/adf-structures-base.min.js"></script>
-        <script src="bower_components/moment/moment.js"></script>
-        <script src="bower_components/adf-widget-clock/dist/adf-widget-clock.min.js"></script>
-        <script src="bower_components/angular-markdown-directive/markdown.js"></script>
-        <script src="bower_components/adf-widget-news/dist/adf-widget-news.min.js"></script>
-        <script src="bower_components/showdown/compressed/Showdown.min.js"></script>
-        <script src="bower_components/adf-widget-markdown/dist/adf-widget-markdown.min.js"></script>
-        <script src="bower_components/Sortable/Sortable.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="bower_components/adf-widget-weather/dist/adf-widget-weather.js"></script>
-        <script src="bower_components/angular-dashboard-framework/dist/angular-dashboard-framework.min.js"></script>
-        <script src="bower_components/admin-lte/dist/js/app.min.js"></script>
-        <!-- endbuild -->
-
-
-    <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
-    <script src="scripts/app/app.js"></script>
-    <script src="scripts/app/app.constants.js"></script>
-    <script src="scripts/components/auth/auth.service.js"></script>
-    <script src="scripts/components/auth/principal.service.js"></script>
-    <script src="scripts/components/auth/authority.directive.js"></script>
-    <script src="scripts/components/auth/services/account.service.js"></script>
-    <script src="scripts/components/auth/services/activate.service.js"></script>
-    <script src="scripts/components/auth/services/password.service.js"></script>
-    <script src="scripts/components/auth/services/register.service.js"></script>
-    <script src="scripts/components/form/form.directive.js"></script>
-    <script src="scripts/components/form/maxbytes.directive.js"></script>
-    <script src="scripts/components/form/minbytes.directive.js"></script>
-    <script src="scripts/components/form/pager.directive.js"></script>
-    <script src="scripts/components/form/pagination.directive.js"></script>
-    <script src="scripts/components/admin/audits.service.js"></script>
-    <script src="scripts/components/admin/logs.service.js"></script>
-    <script src="scripts/components/admin/configuration.service.js"></script>
-    <script src="scripts/components/admin/monitoring.service.js"></script>
-    <script src="scripts/components/interceptor/auth.interceptor.js"></script>
-    <script src="scripts/components/interceptor/errorhandler.interceptor.js"></script>
-    <script src="scripts/components/interceptor/notification.interceptor.js"></script>
-    <script src="scripts/components/navbar/navbar.directive.js"></script>
-    <script src="scripts/components/navbar/navbar.controller.js"></script>
-    <script src="scripts/components/sidebar/sidebar.controller.js"></script>
-    <script src="scripts/components/sidebar/sidebar.directive.js"></script>
-    <script src="scripts/components/user/user.service.js"></script>
-    <script src="scripts/components/util/truncate.filter.js"></script>
-    <script src="scripts/components/util/base64.service.js"></script>
-    <script src="scripts/components/util/capitalize.filter.js"></script>
-    <script src="scripts/components/alert/alert.service.js"></script>
-    <script src="scripts/components/alert/alert.directive.js"></script>
-    <script src="scripts/components/util/parse-links.service.js"></script>
-    <script src="scripts/components/util/dateutil.service.js"></script>
-    <script src="scripts/app/account/account.js"></script>
-    <script src="scripts/app/account/activate/activate.js"></script>
-    <script src="scripts/app/account/activate/activate.controller.js"></script>
-    <script src="scripts/app/account/login/login.js"></script>
-    <script src="scripts/app/account/login/login.controller.js"></script>
-    <script src="scripts/app/account/password/password.js"></script>
-    <script src="scripts/app/account/password/password.controller.js"></script>
-    <script src="scripts/app/account/password/password.directive.js"></script>
-    <script src="scripts/app/account/register/register.js"></script>
-    <script src="scripts/app/account/register/register.controller.js"></script>
-    <script src="scripts/app/account/settings/settings.js"></script>
-    <script src="scripts/app/account/settings/settings.controller.js"></script>
-    <script src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
-    <script src="scripts/app/account/reset/finish/reset.finish.js"></script>
-    <script src="scripts/app/account/reset/request/reset.request.controller.js"></script>
-    <script src="scripts/app/account/reset/request/reset.request.js"></script>
-    <script src="scripts/app/admin/admin.js"></script>
-    <script src="scripts/app/admin/audits/audits.js"></script>
-    <script src="scripts/app/admin/audits/audits.controller.js"></script>
-    <script src="scripts/app/admin/configuration/configuration.js"></script>
-    <script src="scripts/app/admin/configuration/configuration.controller.js"></script>
-    <script src="scripts/app/admin/docs/docs.js"></script>
-    <script src="scripts/app/admin/health/health.js"></script>
-    <script src="scripts/app/admin/health/health.controller.js"></script>
-    <script src="scripts/app/admin/health/health.modal.controller.js"></script>
-    <script src="scripts/app/admin/logs/logs.js"></script>
-    <script src="scripts/app/admin/logs/logs.controller.js"></script>
-    <script src="scripts/app/admin/metrics/metrics.js"></script>
-    <script src="scripts/app/admin/metrics/metrics.controller.js"></script>
-    <script src="scripts/app/admin/metrics/metrics.modal.controller.js"></script>
-     <script src="scripts/app/admin/user-management/user-management-delete-dialog.controller.js"></script>
-    <script src="scripts/app/admin/user-management/user-management-detail.controller.js"></script>
-    <script src="scripts/app/admin/user-management/user-management-dialog.controller.js"></script>
-    <script src="scripts/app/admin/user-management/user-management.controller.js"></script>
-    <script src="scripts/app/admin/user-management/user-management.js"></script>
-    <script src="scripts/app/entities/entity.js"></script>
-    <script src="scripts/app/error/error.js"></script>
-    <script src="scripts/app/main/main.js"></script>
-    <script src="scripts/app/main/main.controller.js"></script>
-    <script src="bower_components/messageformat/locale/en.js"></script>
-    <script src="bower_components/messageformat/locale/fr.js"></script>
-    <script src="bower_components/messageformat/locale/zh.js"></script>
-    <script src="scripts/components/language/language.service.js"></script>
-    <script src="scripts/components/language/language.controller.js"></script>
-    <script src="scripts/components/auth/services/sessions.service.js"></script>
-    <script src="scripts/components/auth/provider/auth.session.service.js"></script>
-    <script src="scripts/app/account/sessions/sessions.js"></script>
-    <script src="scripts/app/account/sessions/sessions.controller.js"></script>
-    <script src="scripts/app/admin/tracker/tracker.js"></script>
-    <script src="scripts/app/admin/tracker/tracker.controller.js"></script>
-    <script src="scripts/components/tracker/tracker.service.js"></script>
-    <!-- endbuild -->
-    
-    <!--引入oa模块js -->
-    <script src="scripts/app/admin/oa/workovertime.js"></script>
-    <script src="scripts/app/admin/oa/workovertime.controller.js"></script>
-
-    <script src="scripts/app/admin/oa/workovertime-detail.controller.js"></script>
-    <script src="scripts/app/admin/oa/workovertime-dialog.controller.js"></script>
-    <script src="scripts/app/admin/oa/workovertime-delete-dialog.controller.js"></script>
-    <script src="scripts/app/admin/oa/workovertime-fail.controller.js"></script>
-    <script src="scripts/components/user/workovertime.service.js"></script>
-
-	<!--引入oa-takeVacationDetail模块js -->
-	<script src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail.js"></script>
-	<script src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail.controller.js"></script>
-	<script src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-detail.controller.js"></script>
-	<script src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-dialog.controller.js"></script>
-	<script src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-delete-dialog.controller.js"></script>
-	<script src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-fail.controller.js"></script>
-	<script src="scripts/components/user/takeVacationDetail.service.js"></script>
-    
-
-	  
-	<!-- 日期时间插件 -->
-    <script src="bower_components/admin-lte/plugins/timepicker/bootstrap-timepicker.js"></script>
-    <script src="bower_components/admin-lte/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-   
-    <script src="bower_components/admin-lte/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
-    <script src="bower_components/admin-lte/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-    <script src="bower_components/admin-lte/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-        
-    
-    <script src="bower_components/admin-lte/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" /></script>
-	<link href="bower_components/admin-lte/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    
-   
-   <link href="bower_components/admin-lte/plugins/timepicker/bootstrap-timepicker.css" rel="stylesheet">
-   <link href="bower_components/admin-lte/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
-      
+		<script
+			src="bower_components/adf-structures-base/dist/adf-structures-base.min.js"></script>
+		<script src="bower_components/moment/moment.js"></script>
+		<script
+			src="bower_components/adf-widget-clock/dist/adf-widget-clock.min.js"></script>
+		<script src="bower_components/angular-markdown-directive/markdown.js"></script>
+		<script
+			src="bower_components/adf-widget-news/dist/adf-widget-news.min.js"></script>
+		<script src="bower_components/showdown/compressed/Showdown.min.js"></script>
+		<script
+			src="bower_components/adf-widget-markdown/dist/adf-widget-markdown.min.js"></script>
+		<script src="bower_components/Sortable/Sortable.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script
+			src="bower_components/adf-widget-weather/dist/adf-widget-weather.js"></script>
+		<script
+			src="bower_components/angular-dashboard-framework/dist/angular-dashboard-framework.min.js"></script>
+		<script src="bower_components/admin-lte/dist/js/app.min.js"></script>
+		<!-- endbuild -->
 
 
-	
-    <!--下拉  -->	
-	<script src="/bower_components/admin-lte/build/bootstrap-less/mixins/grid.less"></script>
-	<script src="/bower_components/bootstrap/less/mixins/grid-framework.less"></script>
-	<script src="/bower_components/admin-lte/dist/css/AdminLTE.min.css"></script>
-	<script src="/bower_components/font-awesome/css/font-awesome.css"></script>
-	<script src="/bower_components/bootstrap/dist/css/bootstrap.css"></script>
-	
-	
-	
+		<!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
+		<script src="scripts/app/app.js"></script>
+		<script src="scripts/app/app.constants.js"></script>
+		<script src="scripts/components/auth/auth.service.js"></script>
+		<script src="scripts/components/auth/principal.service.js"></script>
+		<script src="scripts/components/auth/authority.directive.js"></script>
+		<script src="scripts/components/auth/services/account.service.js"></script>
+		<script src="scripts/components/auth/services/activate.service.js"></script>
+		<script src="scripts/components/auth/services/password.service.js"></script>
+		<script src="scripts/components/auth/services/register.service.js"></script>
+		<script src="scripts/components/form/form.directive.js"></script>
+		<script src="scripts/components/form/maxbytes.directive.js"></script>
+		<script src="scripts/components/form/minbytes.directive.js"></script>
+		<script src="scripts/components/form/pager.directive.js"></script>
+		<script src="scripts/components/form/pagination.directive.js"></script>
+		<script src="scripts/components/admin/audits.service.js"></script>
+		<script src="scripts/components/admin/logs.service.js"></script>
+		<script src="scripts/components/admin/configuration.service.js"></script>
+		<script src="scripts/components/admin/monitoring.service.js"></script>
+		<script src="scripts/components/interceptor/auth.interceptor.js"></script>
+		<script
+			src="scripts/components/interceptor/errorhandler.interceptor.js"></script>
+		<script
+			src="scripts/components/interceptor/notification.interceptor.js"></script>
+		<script src="scripts/components/navbar/navbar.directive.js"></script>
+		<script src="scripts/components/navbar/navbar.controller.js"></script>
+		<script src="scripts/components/sidebar/sidebar.controller.js"></script>
+		<script src="scripts/components/sidebar/sidebar.directive.js"></script>
+		<script src="scripts/components/user/user.service.js"></script>
+		<script src="scripts/components/util/truncate.filter.js"></script>
+		<script src="scripts/components/util/base64.service.js"></script>
+		<script src="scripts/components/util/capitalize.filter.js"></script>
+		<script src="scripts/components/alert/alert.service.js"></script>
+		<script src="scripts/components/alert/alert.directive.js"></script>
+		<script src="scripts/components/util/parse-links.service.js"></script>
+		<script src="scripts/components/util/dateutil.service.js"></script>
+		<script src="scripts/app/account/account.js"></script>
+		<script src="scripts/app/account/activate/activate.js"></script>
+		<script src="scripts/app/account/activate/activate.controller.js"></script>
+		<script src="scripts/app/account/login/login.js"></script>
+		<script src="scripts/app/account/login/login.controller.js"></script>
+		<script src="scripts/app/account/password/password.js"></script>
+		<script src="scripts/app/account/password/password.controller.js"></script>
+		<script src="scripts/app/account/password/password.directive.js"></script>
+		<script src="scripts/app/account/register/register.js"></script>
+		<script src="scripts/app/account/register/register.controller.js"></script>
+		<script src="scripts/app/account/settings/settings.js"></script>
+		<script src="scripts/app/account/settings/settings.controller.js"></script>
+		<script
+			src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
+		<script src="scripts/app/account/reset/finish/reset.finish.js"></script>
+		<script
+			src="scripts/app/account/reset/request/reset.request.controller.js"></script>
+		<script src="scripts/app/account/reset/request/reset.request.js"></script>
+		<script src="scripts/app/admin/admin.js"></script>
+		<script src="scripts/app/admin/audits/audits.js"></script>
+		<script src="scripts/app/admin/audits/audits.controller.js"></script>
+		<script src="scripts/app/admin/configuration/configuration.js"></script>
+		<script
+			src="scripts/app/admin/configuration/configuration.controller.js"></script>
+		<script src="scripts/app/admin/docs/docs.js"></script>
+		<script src="scripts/app/admin/health/health.js"></script>
+		<script src="scripts/app/admin/health/health.controller.js"></script>
+		<script src="scripts/app/admin/health/health.modal.controller.js"></script>
+		<script src="scripts/app/admin/logs/logs.js"></script>
+		<script src="scripts/app/admin/logs/logs.controller.js"></script>
+		<script src="scripts/app/admin/metrics/metrics.js"></script>
+		<script src="scripts/app/admin/metrics/metrics.controller.js"></script>
+		<script src="scripts/app/admin/metrics/metrics.modal.controller.js"></script>
+		<script
+			src="scripts/app/admin/user-management/user-management-delete-dialog.controller.js"></script>
+		<script
+			src="scripts/app/admin/user-management/user-management-detail.controller.js"></script>
+		<script
+			src="scripts/app/admin/user-management/user-management-dialog.controller.js"></script>
+		<script
+			src="scripts/app/admin/user-management/user-management.controller.js"></script>
+		<script src="scripts/app/admin/user-management/user-management.js"></script>
+		<script src="scripts/app/entities/entity.js"></script>
+		<script src="scripts/app/error/error.js"></script>
+		<script src="scripts/app/main/main.js"></script>
+		<script src="scripts/app/main/main.controller.js"></script>
+		<script src="bower_components/messageformat/locale/en.js"></script>
+		<script src="bower_components/messageformat/locale/fr.js"></script>
+		<script src="bower_components/messageformat/locale/zh.js"></script>
+		<script src="scripts/components/language/language.service.js"></script>
+		<script src="scripts/components/language/language.controller.js"></script>
+		<script src="scripts/components/auth/services/sessions.service.js"></script>
+		<script src="scripts/components/auth/provider/auth.session.service.js"></script>
+		<script src="scripts/app/account/sessions/sessions.js"></script>
+		<script src="scripts/app/account/sessions/sessions.controller.js"></script>
+		<script src="scripts/app/admin/tracker/tracker.js"></script>
+		<script src="scripts/app/admin/tracker/tracker.controller.js"></script>
+		<script src="scripts/components/tracker/tracker.service.js"></script>
+		<!-- endbuild -->
+
+		<!--引入oa模块js -->
+		<script src="scripts/app/admin/oa/workovertime.js"></script>
+		<script src="scripts/app/admin/oa/workovertime.controller.js"></script>
+
+		<script src="scripts/app/admin/oa/workovertime-detail.controller.js"></script>
+		<script src="scripts/app/admin/oa/workovertime-dialog.controller.js"></script>
+		<script
+			src="scripts/app/admin/oa/workovertime-delete-dialog.controller.js"></script>
+		<script src="scripts/app/admin/oa/workovertime-fail.controller.js"></script>
+		<script src="scripts/components/user/workovertime.service.js"></script>
+
+		<!--引入oa-takeVacationDetail模块js -->
+		<script
+			src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail.js"></script>
+		<script
+			src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail.controller.js"></script>
+		<script
+			src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-detail.controller.js"></script>
+		<script
+			src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-dialog.controller.js"></script>
+		<script
+			src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-delete-dialog.controller.js"></script>
+		<script
+			src="scripts/app/admin/oa-takeVacationDetail/takeVacationDetail-fail.controller.js"></script>
+		<script src="scripts/components/user/takeVacationDetail.service.js"></script>
+
+
+
+		<!-- 日期时间插件 -->
+		<script
+			src="bower_components/admin-lte/plugins/timepicker/bootstrap-timepicker.js"></script>
+		<script
+			src="bower_components/admin-lte/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
+		<script
+			src="bower_components/admin-lte/plugins/bootstrap-daterangepicker/daterangepicker.min.js"
+			type="text/javascript"></script>
+		<script
+			src="bower_components/admin-lte/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
+			type="text/javascript"></script>
+		<script
+			src="bower_components/admin-lte/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"
+			type="text/javascript"></script>
+
+
+		<script
+			src="bower_components/admin-lte/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" /></script>
+		<link
+			href="bower_components/admin-lte/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"
+			rel="stylesheet">
+
+
+		<link
+			href="bower_components/admin-lte/plugins/timepicker/bootstrap-timepicker.css"
+			rel="stylesheet">
+		<link
+			href="bower_components/admin-lte/plugins/timepicker/bootstrap-timepicker.min.css"
+			rel="stylesheet">
+
+
+
+
+		<!--下拉  -->
+		<script
+			src="/bower_components/admin-lte/build/bootstrap-less/mixins/grid.less"></script>
+		<script
+			src="/bower_components/bootstrap/less/mixins/grid-framework.less"></script>
+		<script src="/bower_components/admin-lte/dist/css/AdminLTE.min.css"></script>
+		<script src="/bower_components/font-awesome/css/font-awesome.css"></script>
+		<script src="/bower_components/bootstrap/dist/css/bootstrap.css"></script>
 </body>
 
 </html>
