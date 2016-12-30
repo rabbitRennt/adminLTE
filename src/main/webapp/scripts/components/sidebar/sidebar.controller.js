@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('tuxAdminApp')
-    .controller('SidebarController', function ($scope, $location, $state, Auth, Principal, ENV, User) {
+    .controller('SidebarController', function ($scope, $location, $state, Account,Auth, Principal, ENV, User) {
     	$scope.isAuthenticated = Principal.isAuthenticated;
         //$scope.username = JSON.stringify(Principal);
-    	$scope.username = "admin";
     	
+        $scope.username = Principal.getIdentity().login;
     	$scope.userImage ="/dist/img/user2-160x160.jpg";
+    	
     	$scope.$state = $state;
         $scope.inProduction = ENV === 'prod';
 

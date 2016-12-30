@@ -7,13 +7,13 @@
         <span class="logo-lg">TUX Admin Dashboard</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
 
-        <div class="navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
+        <div class="navbar-custom-menu" id="navbar-collapse" ng-switch="isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
 
                 <!-- <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
@@ -74,20 +74,7 @@
                  -->
                
                
-                <li ui-sref-active="active" class="dropdown pointer" ng-controller="LanguageController">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-flag"></span>
-                            <span class="hidden-sm" translate="global.menu.language">Language</span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li active-menu="{{language}}" ng-repeat="language in languages">
-                            <a href="" ng-click="changeLanguage(language)" data-toggle="collapse" data-target=".navbar-collapse.in">{{language | findLanguageFromKey}}</a>
-                        </li>
-                    </ul>
-                </li>
+                
                
         <!-- Messages: style can be found in dropdown.less-->
         <li class="dropdown messages-menu">
@@ -124,21 +111,21 @@
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
-                  {{firstName}} {{lastName}} - Web Developer
-                  <small>Member since {{createdDate | date:'dd/MM/yy HH:mm:ss' }}</small>
+                  {{user.firstName}} {{user.lastName}} - <span translate="global.menu.account.webDeveloper">Web Developer</span>
+                  <small><span translate="global.menu.account.memberSince">Member since</span> {{user.createdDate | date:'dd/MM/yy HH:mm:ss' }}</small>
                 </p>
               </li>
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="#" translate="global.menu.account.followers">Followers</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
+                    <a href="#" translate="global.menu.account.sales">Sales</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                    <a href="#" translate="global.menu.account.friends">Friends</a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -146,22 +133,38 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left" ui-sref-active="active" ng-switch-when="true">
-                	<a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
-                            &#xA0;<span translate="global.menu.account.password">Password</span></a>
-                	<!--
-                	<a href="#" class="btn btn-default btn-flat">Profile</a> 
-                	 -->
+                	<!-- <a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
+                            &#xA0;<span translate="global.menu.account.password">Password</span></a> -->
+                	
+                	<a href="#" class="btn btn-default btn-flat"><span translate="global.menu.account.password">Password</span></a> 
+                	
                 </div>
                 <div class="pull-right" ui-sref-active="active" ng-switch-when="true">
-                	<a href="" ng-click="logout()" id="logout" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
-                            &#xA0;<span translate="global.menu.account.logout">Sign out</span></a>
-                    <!-- 
-                    <a href="#" ng-click="logout()" class="btn btn-default btn-flat">Sign out</a>
-                     -->
+                	<!--<a href="" ng-click="logout()" id="logout" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
+                            &#xA0;<span translate="global.menu.account.logout">Sign out</span></a>-->
+                     
+                    <a href="#" ng-click="logout()" class="btn btn-default btn-flat"><span translate="global.menu.account.logout">Sign out</span></a>
+                     
                 </div>
               </li>
             </ul>
           </li>
+          
+          <li ui-sref-active="active" class="dropdown pointer" ng-controller="LanguageController">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                   <span>
+                       <span class="glyphicon glyphicon-flag"></span>
+                       <span class="hidden-sm" translate="global.menu.language">Language</span>
+                       <b class="caret"></b>
+                   </span>
+               </a>
+               <ul class="dropdown-menu" style="background:#33ccff;">
+                   <li active-menu="{{language}}" ng-repeat="language in languages">
+                       <a href="" ng-click="changeLanguage(language)" data-toggle="collapse" data-target=".navbar-collapse.in">{{language | findLanguageFromKey}}</a>
+                   </li>
+               </ul>
+           </li>
+          
             </ul>
         </div>
     </nav>

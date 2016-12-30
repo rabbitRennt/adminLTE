@@ -6,7 +6,14 @@ angular.module('tuxAdminApp')
             _authenticated = false;
 
         return {
-            isIdentityResolved: function () {
+        	getIdentity: function () {
+                 if(angular.isDefined(_identity)){
+                	 return _identity;
+                 }else{
+                	 return undefined;
+                 }
+            },
+        	isIdentityResolved: function () {
                 return angular.isDefined(_identity);
             },
             isAuthenticated: function () {

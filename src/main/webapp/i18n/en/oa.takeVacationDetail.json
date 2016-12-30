@@ -25,7 +25,13 @@
         "pass": "PASS",
         "notGo": "NOT GO",
         "reject": "REJECT",
-        "approval": "APPROVAL"
+        "approval": "APPROVAL",
+        "search": "Search",
+        "searchWorkOvertime": "Search WorkOvertime",
+        "vacationRecord": "Vacation Record",
+        "totalWorkOvertimeTime": "Total WorkOvertime Time:",
+        "takeVacationTime": "TakeVacation Time:",
+        "takenVacationTime": "TakenVacation Time:"
        
     }
 }

@@ -16,7 +16,12 @@
                 "sessions": "会话",
                 "login": "登录",
                 "logout": "退出",
-                "register": "注册"
+                "register": "注册",
+                "webDeveloper": "Web工程师",
+            	"memberSince": "入职于",
+            	"followers": "鲜花",
+            	"sales": "业绩",
+            	"friends": "同事"
             },
             "admin": {
                 "main": "管理员",
@@ -32,7 +37,9 @@
                 "oa-workOvertime": "我的加班",
                 "oa-takeVacationDetail": "我的调休"
             },
-            "language": "语言"
+            "language": "语言",
+            "online": "在线",
+            "workVacation": "加班和调休"
         },
         "form": {
             "username": "用户名",
