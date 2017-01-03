@@ -19,6 +19,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import java.util.Locale;
+import java.util.Properties;
 
 /**
  * Service for sending e-mails.
@@ -48,18 +49,33 @@ public class MailService {
      * System default email address that sends the e-mails.
      */
     private String from;
+    
+    private static Properties  javaMailProperties = new Properties() ;
+    
+    static {
+    	javaMailProperties.put("mail.smtp.auth", true);
+    }
 
     @Async
     public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
         log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
             isMultipart, isHtml, to, subject, content);
 
+        
+        javaMailSender.setHost(jHipsterProperties.getMail().getHost());
+		//mailSender.setPort(25);
+        javaMailSender.setUsername(jHipsterProperties.getMail().getUsername());
+        javaMailSender.setPassword(jHipsterProperties.getMail().getPassword());
+		javaMailSender.setJavaMailProperties(javaMailProperties);
+        
         // Prepare message using a Spring helper
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        
+       
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, CharEncoding.UTF_8);
             message.setTo(to);
-            message.setFrom(jHipsterProperties.getMail().getFrom());
+            message.setFrom(jHipsterProperties.getMail().getUsername());
             message.setSubject(subject);
             message.setText(content, isHtml);
             javaMailSender.send(mimeMessage);

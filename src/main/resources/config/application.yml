@@ -46,7 +46,11 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: tuxAdmin@localhost
+        #from: tuxAdmin@localhost
+        from: admin@jumore.com
+        host: mail.maisulang.com
+        username: admin@jumore.com
+        password: "jumore.en#201508"
     security:
         rememberme:
             # security key (this key should be unique for your application, and kept secret)
