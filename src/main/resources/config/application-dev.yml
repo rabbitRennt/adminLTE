@@ -70,7 +70,12 @@ jhipster:
         hazelcast:
             backupCount: 1
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: tuxAdmin@localhost
+        #from: tuxAdmin@localhost
+        from: admin@jumore.com
+        host: mail.maisulang.com
+        username: admin@jumore.com
+        password: "jumore.en#201508"
+        
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         spark:

@@ -203,13 +203,13 @@ public class JHipsterProperties {
 
     public static class Mail {
 
-        private String from = "admin@jumore.com";
+		private String from ;
         
-        private String host="mail.maisulang.com";
+        private String host ;
         
-        private String username="admin@jumore.com";
+        private String username ;
         
-        private String password="jumore.en#201508";
+        private String password ;
 
         public String getFrom() {
             return from;
