@@ -138,11 +138,11 @@
                 <td>
                     <button has-authority="ROLE_ADMIN" type="submit" ng-click="pass({'id':x.id,'status':1})" ng-show="x.status == 0"
                             class="btn btn-info btn-sm">
-                        <span class="glyphicon glyphicon-eye-open" translate="oa-takeVacationDetail.pass">Pass</span>
+                        <span class="glyphicon" translate="oa-takeVacationDetail.pass">Pass</span>
                     </button>
                     <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-takeVacationDetail.update({id:x.id})" ng-show="x.status == 0"
                             class="btn btn-primary btn-sm">
-                        <span class="glyphicon glyphicon-pencil" translate="oa-takeVacationDetail.notGo">Not go</span>
+                        <span class="glyphicon" translate="oa-takeVacationDetail.notGo">Not go</span>
                     </button>
                     
                     <button type="submit"
