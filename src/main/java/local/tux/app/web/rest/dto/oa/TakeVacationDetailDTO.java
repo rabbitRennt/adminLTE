@@ -4,6 +4,9 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import local.tux.app.domain.util.CustomJsonDateDeserializer;
 import local.tux.app.web.rest.dto.oa.EOAConstantHelper.EStatus;
 
 public class TakeVacationDetailDTO {
@@ -12,8 +15,10 @@ public class TakeVacationDetailDTO {
 	private Long id;
 	@NotNull
 	private EStatus status; // '状态@申请中:通过:驳回',
+	@JsonDeserialize(using = CustomJsonDateDeserializer.class) 
 	@NotNull	
 	private Date startDate; // '开始时间',
+	@JsonDeserialize(using = CustomJsonDateDeserializer.class) 
 	@NotNull
 	private Date endDate; // '结束时间',
 	private Integer timeLength; // '时长(H)',
