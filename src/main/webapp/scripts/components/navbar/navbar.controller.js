@@ -5,7 +5,8 @@ angular.module('tuxAdminApp')
         $scope.isAuthenticated = Principal.isAuthenticated;
         $scope.$state = $state;
         $scope.inProduction = ENV === 'prod';
-        if ($scope.isAuthenticated ==true)
+        debugger
+        if ($scope.isAuthenticated() == true)
         	$scope.user = Principal.getIdentity();
         
     	console.log(Principal.getIdentity());
@@ -18,7 +19,7 @@ angular.module('tuxAdminApp')
             });
         };
         
-        if ($scope.isAuthenticated ==true)
+        if ($scope.isAuthenticated() == true)
         	$scope.load($scope.login);
 
         $scope.logout = function () {
