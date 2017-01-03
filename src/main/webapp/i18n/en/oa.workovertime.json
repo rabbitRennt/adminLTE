@@ -23,7 +23,7 @@
         "remark": "Remark",
         "action": "Action",
         "pass": "PASS",
-        "notGo": "NOT PASS",
+        "notPass": "NOT PASS",
         "reject": "REJECT",
         "approval": "APPROVAL",
         "search": "Search",

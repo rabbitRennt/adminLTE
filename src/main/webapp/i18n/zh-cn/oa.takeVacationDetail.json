@@ -23,7 +23,7 @@
         "remark": "说明",
         "action": "操作",
         "pass": "通过",
-        "notGo": "不通过",
+        "notPass": "不通过",
         "reject": "驳回",
         "approval": "审核中",
         "search": "查询",

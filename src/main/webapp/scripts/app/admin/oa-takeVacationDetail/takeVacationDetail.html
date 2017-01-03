@@ -131,9 +131,9 @@
                 <td>{{x.startDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{x.endDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{x.timeLength}}</td>
-                <td ng-if="x.status==0" translate="oa-takeVacationDetail.approval">审批中</td>
-                <td ng-if="x.status==1" translate="oa-takeVacationDetail.pass">通过</td>
-                <td ng-if="x.status==2" translate="oa-takeVacationDetail.reject">驳回</td>
+                <td ng-if="x.status==0" translate="oa-takeVacationDetail.approval">approval</td>
+                <td ng-if="x.status==1" translate="oa-takeVacationDetail.pass">pass</td>
+                <td ng-if="x.status==2" translate="oa-takeVacationDetail.reject">reject</td>
                 <td>{{x.remark}}</td>
                 <td>
                     <button has-authority="ROLE_ADMIN" type="submit" ng-click="pass({'id':x.id,'status':1})" ng-show="x.status == 0"
@@ -142,7 +142,7 @@
                     </button>
                     <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-takeVacationDetail.update({id:x.id})" ng-show="x.status == 0"
                             class="btn btn-primary btn-sm">
-                        <span class="glyphicon" translate="oa-takeVacationDetail.notGo">Not go</span>
+                        <span class="glyphicon" translate="oa-takeVacationDetail.notPass">Not Pass</span>
                     </button>
                     
                     <button type="submit"
