@@ -112,18 +112,18 @@
                 <td>{{x.startDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{x.endDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{x.timeLength}}</td>
-                <td ng-if="x.status==0" translate="oa-workOvertime.approval">审批中</td>
-                <td ng-if="x.status==1" translate="oa-workOvertime.pass">通过</td>
-                <td ng-if="x.status==2" translate="oa-workOvertime.reject">驳回</td>
+                <td ng-if="x.status==0" translate="oa-workOvertime.approval">approval</td>
+                <td ng-if="x.status==1" translate="oa-workOvertime.pass">pass</td>
+                <td ng-if="x.status==2" translate="oa-workOvertime.reject">reject</td>
                 <td>{{x.remark}}</td>
                 <td>
                     <button has-authority="ROLE_ADMIN" type="submit" ng-click="pass({'id':x.id,'status':1})" ng-show="x.status == 0"
                             class="btn btn-info btn-sm">
                         <span class="glyphicon" translate="oa-workOvertime.pass">Pass</span>
                     </button>
-                    <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-workovertime.update({id:x.id})" ng-show="x.status == 0"
+                    <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-workovertime.noPass({id:x.id})" ng-show="x.status == 0"
                             class="btn btn-primary btn-sm">
-                        <span class="glyphicon" translate="oa-workOvertime.notGo">Not go</span>
+                        <span class="glyphicon" translate="oa-workOvertime.notPass">Not Pass</span>
                     </button>
                 
                     <button type="submit"
