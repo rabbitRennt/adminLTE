@@ -16,9 +16,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import local.tux.app.domain.util.CustomJsonDateDeserializer;
 
 
 @Entity
