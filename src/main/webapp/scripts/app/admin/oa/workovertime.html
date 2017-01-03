@@ -107,10 +107,9 @@
             <tr ng-repeat="x in workovertimes track by x.id">
                 <td>{{x.id}}</a></td>
                 <td>{{x.createdBy}}</td>
-                <td>{{x.createdDate | date:'dd/MM/yy HH:mm'}}</td>
-               
-                <td>{{x.startDate | date:'dd/MM/yy HH:mm'}}</td>
-                <td>{{x.endDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td>{{x.createdDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{x.startDate}}</td>
+                <td>{{x.endDate}}</td>
                 <td>{{x.timeLength}}</td>
                 <td ng-if="x.status==0" translate="oa-workOvertime.approval">approval</td>
                 <td ng-if="x.status==1" translate="oa-workOvertime.pass">pass</td>
@@ -121,7 +120,7 @@
                             class="btn btn-info btn-sm">
                         <span class="glyphicon" translate="oa-workOvertime.pass">Pass</span>
                     </button>
-                    <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-workovertime.update({id:x.id})" ng-show="x.status == 0"
+                    <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-workovertime.noPass({id:x.id})" ng-show="x.status == 0"
                             class="btn btn-primary btn-sm">
                         <span class="glyphicon" translate="oa-workOvertime.notPass">Not Pass</span>
                     </button>

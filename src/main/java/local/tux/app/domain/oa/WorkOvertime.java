@@ -17,6 +17,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "oa_work_overtime")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -45,11 +47,13 @@ public class WorkOvertime implements Serializable {
 	private Integer status; // '状态@申请中:通过:驳回',
 
 	@NotNull
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	@Column(name = "START_DATE", length = 19)
 	private Date startDate; // '开始时间',
 
 	@NotNull
 	@Column(name = "END_DATE", length = 19)
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date endDate; // '结束时间',
 
 	@NotNull

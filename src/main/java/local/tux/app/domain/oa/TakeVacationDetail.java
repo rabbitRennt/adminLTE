@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import local.tux.app.domain.util.CustomJsonDateDeserializer;
@@ -52,11 +53,13 @@ public class TakeVacationDetail implements Serializable {
 	private Integer status; // '状态@申请中:通过:驳回',
 
 	@NotNull
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	@Column(name = "START_DATE", nullable = false)
 	private Date startDate; // '开始时间',
 
 	
 	@NotNull
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	@Column(name = "END_DATE", nullable = false)
 	private Date endDate; // '结束时间',
 

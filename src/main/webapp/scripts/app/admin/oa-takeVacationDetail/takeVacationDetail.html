@@ -128,8 +128,8 @@
                 <td>{{x.createdBy}}</td>
                 <td>{{x.createdDate | date:'dd/MM/yy HH:mm'}}</td>
                
-                <td>{{x.startDate | date:'dd/MM/yy HH:mm'}}</td>
-                <td>{{x.endDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td>{{x.startDate}}</td>
+                <td>{{x.endDate}}</td>
                 <td>{{x.timeLength}}</td>
                 <td ng-if="x.status==0" translate="oa-takeVacationDetail.approval">approval</td>
                 <td ng-if="x.status==1" translate="oa-takeVacationDetail.pass">pass</td>
@@ -140,7 +140,7 @@
                             class="btn btn-info btn-sm">
                         <span class="glyphicon" translate="oa-takeVacationDetail.pass">Pass</span>
                     </button>
-                    <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-takeVacationDetail.update({id:x.id})" ng-show="x.status == 0"
+                    <button has-authority="ROLE_ADMIN" type="submit" ui-sref="oa-takeVacationDetail.noPass({id:x.id})" ng-show="x.status == 0"
                             class="btn btn-primary btn-sm">
                         <span class="glyphicon" translate="oa-takeVacationDetail.notPass">Not Pass</span>
                     </button>
