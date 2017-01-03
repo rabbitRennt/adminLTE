@@ -11,16 +11,10 @@ angular.module('tuxAdminApp')
         
     	console.log(Principal.getIdentity());
     	
-    	$scope.load = function (login) {
-            User.get({login: login}, function(result) {
-                $scope.firstName = result.firstName;
-                $scope.lastName = result.lastName;
-                $scope.createdDate = result.createdDate;
-            });
-        };
+    	
         
-        if ($scope.isAuthenticated() == true)
-        	$scope.load($scope.login);
+        
+        	
 
         $scope.logout = function () {
             Auth.logout();
