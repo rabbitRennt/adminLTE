@@ -5,7 +5,7 @@ angular.module('tuxAdminApp')
     	
     	$scope.takeVacationDetails = [];
     	$scope.takeVacation = {};
-        $scope.authorities = ["ROLE_USER", "ROLE_ADMIN"];
+        $scope.authorities = ["ROLE_USER", "ROLE_USER"];
 
         $scope.page = 1;
         $scope.loadAll = function () {

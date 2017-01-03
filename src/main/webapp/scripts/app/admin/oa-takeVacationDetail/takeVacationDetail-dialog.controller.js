@@ -3,9 +3,9 @@
 angular.module('tuxAdminApp').controller('takeVacationDetailDialogController',
     ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'takeVacationDetailService', 'Language',
         function($scope, $stateParams, $uibModalInstance, entity, takeVacationDetailService, Language) {
-
+    	
         $scope.takeVacationDetail = entity;
-        $scope.authorities = ["ROLE_USER", "ROLE_ADMIN"];
+        $scope.authorities = ["ROLE_USER", "ROLE_USER"];
         Language.getAll().then(function (languages) {
             $scope.languages = languages;
         });
@@ -31,7 +31,7 @@ angular.module('tuxAdminApp').controller('takeVacationDetailDialogController',
             $uibModalInstance.dismiss('cancel');
         };
         
-        $scope.load3 = function() {
+       /* $scope.load3 = function() {
             $('#datepicker3').datetimepicker({
             	autoclose: true,
             	format: 'yyyy-mm-dd hh:ii:ss'
@@ -44,5 +44,5 @@ angular.module('tuxAdminApp').controller('takeVacationDetailDialogController',
              	autoclose: true,
              	format: 'yyyy-mm-dd hh:ii:ss'
              });
-        }
+        }*/
 }]);

@@ -48,7 +48,7 @@ angular.module('tuxAdminApp')
                 parent: 'admin',
                 url: '/oa-takeVacationDetail/new',
                 data: {
-                    authorities: ['ROLE_ADMIN'],
+                    authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -74,7 +74,7 @@ angular.module('tuxAdminApp')
             parent: 'admin',
             url: '/oa-takeVacationDetail/{id}/edit',
             data: {
-                authorities: ['ROLE_ADMIN'],
+                authorities: ['ROLE_USER'],
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -97,7 +97,7 @@ angular.module('tuxAdminApp')
                 parent: 'oa-takeVacationDetail',
                 url: '/oa-takeVacationDetail/{id}/delete',
                 data: {
-                    authorities: ['ROLE_ADMIN'],
+                    authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -116,7 +116,7 @@ angular.module('tuxAdminApp')
                     })
                 }]
             })
-	        .state('oa-takeVacationDetail.update', {
+	        .state('oa-takeVacationDetail.noPass', {
 	            parent: 'admin',
 	            url: '/oa-takeVacationDetail/{id}/update',
 	            data: {
