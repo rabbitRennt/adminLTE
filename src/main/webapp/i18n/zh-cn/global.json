@@ -53,7 +53,7 @@
         },
         "messages": {
             "info": {
-                "authenticated": "如果您想 <a class=\"alert-link\" href=\"#/login\">登录</a>，您可以使用默认的账户：<br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\").",
+                "authenticated": "如果您想 登录，请点击<a class=\"alert-link\" href=\"#/login\">登录</a>。",
                 "register": "您还没有一个账户吗？ <a class=\"alert-link\" href=\"#/register\">注册一个账户</a>"
             },
             "error": {

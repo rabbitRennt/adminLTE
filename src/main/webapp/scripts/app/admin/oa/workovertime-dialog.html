@@ -12,27 +12,11 @@
             <label translate="global.field.id">ID</label>
             <input type="text" class="form-control" name="id"
                    ng-model="workOvertime.id" readonly>
-        </div>
-
-
-        <div class="form-group">
-        
-        <div class="input-group date form_date col-md-5" data-date="" data-date-format="" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-		      <input class="form-control" size="16" type="text" value="" readonly>
-		      <span class="input-group-addon">
-		      <span class="glyphicon glyphicon-remove"></span>
-		      </span>
-		     <span class="input-group-addon">
-		     <span class="glyphicon glyphicon-calendar"></span></span>
-		 </div>
-		 
-		 
+        </div class="form-group">
+        <div>
             <label class="control-label" translate="oa-workOvertime.createdBy">createdBy</label>
             <input type="text" class="form-control" name="createdBy"
                    ng-model="workOvertime.createdBy"  ng-maxlength="50" readonly>
-
-
-
            <!--  <div ng-show="editForm.createdBy.$invalid">
                 <p class="help-block"
                    ng-show="editForm.createdBy.$error.required" translate="entity.validation.required">
@@ -53,10 +37,11 @@
             	<i class="fa fa-calendar"></i>
             	</div>
             	<input type="text" class="form-control pull-right" name="startDate" id="datepicker"
-                   ng-model="workOvertime.startDate" ng-click="load()" >
+                   ng-model="workOvertime.startDate">
             </div>
            
         </div>
+        
         <div class="form-group">
             <label class="control-label" translate="oa-workOvertime.endDate">endDate</label>
             <div class="input-group date">
@@ -64,7 +49,7 @@
             	<i class="fa fa-calendar"></i>
             	</div>
             	<input type="text" class="form-control pull-right" name="endDate" id="datepicker2"
-                    ng-model="workOvertime.endDate" ng-click="load2()"  >
+                    ng-model="workOvertime.endDate">
             </div>
         </div>
         
@@ -104,6 +89,15 @@
         </button>
     </div>
 </form>
-
+<script>
+$('#datepicker').datetimepicker({
+	autoclose: true,
+	format: 'yyyy-mm-dd hh:ii:ss'
+});
+$('#datepicker2').datetimepicker({
+ 	autoclose: true,
+ 	format: 'yyyy-mm-dd hh:ii:ss'
+ });
+</script>
 
 

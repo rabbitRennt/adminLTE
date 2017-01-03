@@ -26,7 +26,6 @@ public class TakeVacation implements Serializable {
 	 */
 	private static final long serialVersionUID = 8181926604496656212L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "USER_ID", unique = true, nullable = false)
 	private Long userId;
 

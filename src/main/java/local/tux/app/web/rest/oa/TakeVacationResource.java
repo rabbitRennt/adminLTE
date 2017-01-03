@@ -86,6 +86,7 @@ public class TakeVacationResource {
 	@RequestMapping(value = "/takeVacation", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	@Transactional(readOnly = true)
+	@Secured(AuthoritiesConstants.USER)
 	public ResponseEntity<TakeVacation> getAllTakeVacation(Pageable pageable)
 			throws URISyntaxException {
 		

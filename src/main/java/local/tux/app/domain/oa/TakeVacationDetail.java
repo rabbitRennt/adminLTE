@@ -15,6 +15,10 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import local.tux.app.domain.util.CustomJsonDateDeserializer;
+
 
 @Entity
 @Table(name = "oa_take_vacation_detail")

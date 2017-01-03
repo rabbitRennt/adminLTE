@@ -1,5 +1,6 @@
 package local.tux.app.service.oa;
 
+import java.time.ZonedDateTime;
 import java.util.Optional;
 
 import javax.inject.Inject;
@@ -55,6 +56,9 @@ public class TakeVacationService {
 	public void updateById4TakeVacation(String username, Integer timeLength) {
 		Optional<User> user = userRepository.findOneByLogin(username);
 		TakeVacation t = takeVacationRepository.findOneByUserId(user.get().getId());
+		if (t.getUsable() < timeLength) {
+			throw new RuntimeException("no userable time..");
+		}
 		int row = takeVacationRepository.update(-timeLength, 0, timeLength, t.getUserId());
 		if (row == 0)
 			throw new RuntimeException(" this user data error..");
@@ -71,11 +75,10 @@ public class TakeVacationService {
 			t.setUsable(timeLength);
 			t.setUserId(user.get().getId());
 			t.setUsed(0);
+			t.setCreatedBy(ZonedDateTime.now());
+			t.setLastMidfyDate(ZonedDateTime.now());
 			takeVacationRepository.save(t);
 		} else {
-			if (t.getUsable() < timeLength) {
-				throw new RuntimeException("no userable time..");
-			}
 			int row = takeVacationRepository.update(timeLength, timeLength, 0, t.getUserId());
 			if (row == 0)
 				throw new RuntimeException(" this user data error..");

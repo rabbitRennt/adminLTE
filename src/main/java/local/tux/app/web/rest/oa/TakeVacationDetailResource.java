@@ -91,7 +91,7 @@ public class TakeVacationDetailResource {
 	 */
 	@RequestMapping(value = "/takeVacationDetail", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
-	@Secured(AuthoritiesConstants.ADMIN)
+	@Secured(AuthoritiesConstants.USER)
 	public ResponseEntity<?> createTakeVacationDetail(@RequestBody TakeVacationDetailDTO takeVacationDetailDTO,
 			HttpServletRequest request) throws URISyntaxException {
 		log.debug("REST request to save takeVacationDetail : {}", takeVacationDetailDTO);
@@ -114,7 +114,7 @@ public class TakeVacationDetailResource {
 	@RequestMapping(value = "/takeVacationDetail", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	@Transactional
-	@Secured(AuthoritiesConstants.ADMIN)
+	@Secured(AuthoritiesConstants.USER)
 	public ResponseEntity<TakeVacationDetail> updateTakeVacationDetail(
 			@RequestBody TakeVacationDetailDTO takeVacationDetailDTO) throws URISyntaxException {
 		log.debug("REST request to update TakeVacationDetail : {}", takeVacationDetailDTO);
@@ -134,6 +134,7 @@ public class TakeVacationDetailResource {
 	@RequestMapping(value = "/takeVacationDetail", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	@Transactional(readOnly = true)
+	@Secured(AuthoritiesConstants.USER)
 	public ResponseEntity<List<TakeVacationDetail>> getAllTakeVacationDetail(Pageable pageable)
 			throws URISyntaxException {
 		Page<TakeVacationDetail> page=null;
@@ -153,6 +154,7 @@ public class TakeVacationDetailResource {
 	 */
 	@RequestMapping(value = "/takeVacationDetail/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
+	@Secured(AuthoritiesConstants.USER)
 	public ResponseEntity<TakeVacationDetail> getTakeVacationDetail(@PathVariable long id) {
 		log.debug("REST request to get TakeVacationDetail : {}", id);
 		return Optional.ofNullable(takeVacationDetailService.findTakeVacationDetailById(id))
@@ -167,7 +169,7 @@ public class TakeVacationDetailResource {
 
 	@RequestMapping(value = "/takeVacationDetail/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
-	@Secured(AuthoritiesConstants.ADMIN)
+	@Secured(AuthoritiesConstants.USER)
 	public ResponseEntity<Void> deleteTakeVacationDetail(@PathVariable Long id) {
 		log.debug("REST request to delete TakeVacationDetail: {}", id);
 		takeVacationDetailService.deleteTakeVacationDetail(id);
@@ -184,9 +186,15 @@ public class TakeVacationDetailResource {
 	@Secured(AuthoritiesConstants.ADMIN)
 	public ResponseEntity<Void> modifySimple(@RequestBody TakeVacationDetailDTO takeVacationDetailDTO) {
 		log.debug("REST request to delete TakeVacationDetail: {}", takeVacationDetailDTO);
-		takeVacationDetailService.verify(takeVacationDetailDTO.getId(), takeVacationDetailDTO);
-		return ResponseEntity.ok()
-				.headers(HeaderUtil.createEntityUpdateAlert("takeVacationDetail.update", takeVacationDetailDTO.getId().toString())).build();
+		try {
+			takeVacationDetailService.verify(takeVacationDetailDTO.getId(), takeVacationDetailDTO);
+			
+			return ResponseEntity.ok()
+					.headers(HeaderUtil.createEntityUpdateAlert("takeVacationDetail.update", takeVacationDetailDTO.getId().toString())).build();
+		} catch (RuntimeException e) {
+			return ResponseEntity.badRequest()
+					.headers(HeaderUtil.createFailureAlert("takeVacationDetail.update",e.getMessage(),e.getMessage() )).build();
+		}
 	}
 	
 }
