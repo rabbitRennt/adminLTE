@@ -19,7 +19,7 @@
                 "register": "注册",
                 "webDeveloper": "Web工程师",
             	"memberSince": "入职于",
-            	"followers": "鲜花",
+            	"followers": "追随者",
             	"sales": "业绩",
             	"friends": "同事"
             },
@@ -31,7 +31,7 @@
                 "health": "健康状况",
                 "configuration": "配置",
                 "logs": "日志",
-                "audits": "审核",
+                "audits": "审计",
                 "apidocs": "API",
                 "database": "数据库",
                 "oa-workOvertime": "我的加班",
@@ -39,7 +39,8 @@
             },
             "language": "语言",
             "online": "在线",
-            "workVacation": "加班和调休"
+            "workVacation": "加班和调休",
+            "officeAutomation": "自动化办公系统" 
         },
         "form": {
             "username": "用户名",

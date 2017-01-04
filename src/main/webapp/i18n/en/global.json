@@ -39,7 +39,8 @@
             },
             "language": "Language",
             "online": "Online",
-            "workVacation": "Work & Vacation"           
+            "workVacation": "Work & Vacation",
+            "officeAutomation": "Office Automation"           
         },
         "form": {
             "username": "Username",

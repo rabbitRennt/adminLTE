@@ -2,16 +2,16 @@
     "logs": {
         "title": "日志",
         "nbloggers": "这是 {{ total }} 记录。",
-        "filter": "过滤",
+        "filter": "查询",
         "table": {
             "name": "名字",
             "level": "水平"
         }
     },
      "audits": {
-        "title": "审核",
+        "title": "审计",
         "filter": {
-            "title": "过滤器/日期",
+            "title": "审计查询",
             "from": "开始",
             "to": "结束",
             "button": {

@@ -1,8 +1,8 @@
 {
     "audits": {
-        "title": "审核",
+        "title": "审计",
         "filter": {
-            "title": "过滤器/日期",
+            "title": "审计查询",
             "from": "开始",
             "to": "结束",
             "button": {

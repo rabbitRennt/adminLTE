@@ -20,11 +20,13 @@
         "email": "电子邮箱",
         "activated": "激活",
         "deactivated": "解除绑定",
-        "profiles": "简介",
+        "profiles": "角色",
         "langKey": "语言",
         "createdBy": "创建人",
         "createdDate": "创建时间",
         "lastModifiedBy": "最新修改人",
-        "lastModifiedDate": "最新修改时间"
+        "lastModifiedDate": "最新修改时间",
+        "status": "状态",
+        "action": "操作"
     }
 }
